@@ -3,13 +3,17 @@
   "version": "1.0.0",
   "description": "cloning youtube with vanillaJS and nodeJs",
   "main": "index.js",
- 
   "author": "aditya",
   "license": "ISC",
   "dependencies": {
+    "@babel/node": "^7.16.8",
+    "@babel/preset-env": "^7.16.11",
     "express": "^4.17.3"
   },
-  "scripts":{
-    "start":"node index.js"
+  "scripts": {
+    "start": "nodemon babel-node index.js --delay 2"
+  },
+  "devDependencies": {
+    "nodemon": "^2.0.15"
   }
 }

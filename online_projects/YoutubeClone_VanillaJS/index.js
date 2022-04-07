@@ -2,19 +2,22 @@ const express = require('express');
 const app = express();
 const PORT = 4000;
 
-function handlelistening() {
+const handlelistening = () => {
   console.log(`listening at http://localhost:${PORT}`);
-}
+};
 
-function handleHome(req, res) {
-  console.log(req);
-  res.send('hi form res');
-  console.log('hello from req');
-}
+const handleHome = (req, res) => res.send('hi form res');
 
-function handleProfile(req, res) {
-  res.send('you are on my  profile');
-}
+// array function
+const handleProfile = (req, res) => res.send('you are on my  profile');
+
+const betweenHome = (req,res, next) =>{ 
+    console.log('betwSeen');
+    //next is used to call the next middleware in the line i.e handleHome
+    next();
+};
+//...............as many middleware as we want and finally we are going to handle the route............
+app.use(betweenHome);
 
 app.get('/', handleHome);
 
