@@ -6,6 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
 <link href="css/style.css" rel="StyleSheet">
+<link href="">
 
     <title>Momentum Clone</title>
 </head>
@@ -106,7 +107,7 @@
             </section>
             <section class="content-right" >
                 <article class="greetings">
-                    <h1 id="greetings"></h1>
+                    <h1 class="hidden" id="greetings">hello , </h1>
                 </article>
                 <article class="song">
                     <div class="article_content">
@@ -140,7 +141,7 @@
                 </article>
                 <article class="clock">
                     <div class="article_content">
-                        <h2 class="clock_time"></h2>
+                        <h2 class="clock_time">00:00:00</h2>
                         <h4 class="clock_date"></h4>
                     </div>
                 </article>
@@ -158,15 +159,16 @@
     </div>
 
 
-    <section class="login_container">
+    <section class="login_container hidden">
         <article class="login">
             <h1>Hello, what's your name ?</h1>
             <form id="login_form">
-                <input required type="text" maxlength="15">
+                <input required type="text" maxlength="15" placeholder="write your name">
             </form>
         </article>
     </section>
 
-
+<script src="./JS/clock.js"></script>
+<script src="./JS/greetings.js"></script>
 </body>
 </html>
