@@ -2,37 +2,51 @@ import java.util.Scanner;
 
 public class linear_check {
 
-    public static void linear_check(int n, int[][] arr) {
-        int m = (arr[0][1] - arr[1][1]) / (arr[0][0] - arr[1][0]);
-        for (int i = 2; i < n; i++) {
-            for (int j = 0; j < 2; j++) {
+    public static void linear_check(int n, int[] x,int[] y) {
+        int check1 = 1;
+        for(int i=1;i<n;i++){
+            if(x[i] != x[i-1]){
+                check1=0;
+                break;
+            }
+        }
+        if(check1==1){
+            System.out.println("YES");
+            return;
+        }
 
+
+
+
+        
+        int check2 = 1;
+        if(check1==1){
+            for(int i=1;i<n;i++){
+                if(y[i] != y[i-1]){
+                    check2 =0; 
+                    break;
+                }
             }
         }
 
-    }
-
-    public static boolean check(int x1, int y1, int x, int y, int m) {
-
-        int res = (m * (x - x1)) + y1;
-        if (res == y) {
-            return true;
-        } else {
-            return false;
+        if(check2 ==1){
+            System.out.println("YES");
+            return
         }
     }
 
+   
     public static void main(String args[]) {
         Scanner scn = new Scanner(System.in);
         int n = scn.nextInt();
-        int[][] arr = new int[n][2];
-        for (int i = 0; i < n; i++) {
-            for (int j = 0; j < 2; j++) {
-                arr[i][j] = scn.nextInt();
-            }
-        }
+        int[]  x = new int[n];
+        int[]  y = new int[n];
 
-        linear_check(n, arr);
+        for(int i=0;i<n;i++){
+            x[i] = scn.nextInt();
+            y[i] = scn.nextInt();
+        }
+        linear_check(n, x,y);
     }
 
 }

@@ -4,13 +4,12 @@ import morgan from 'morgan';
 import helmet from 'helmet';
 import cookieParser from 'cookie-parser';
 import bodyParser from 'body-parser';
-import { userRouter } from './router.js';
+import userRouter from './routers/userRouter.js';
+import videoRouter from "./router/videoRouter";
+import globalRouter from "./router/globalRouter";
 const app = express();
 
-const handleHome = (req, res) => res.send('hi form res');
 
-// array function
-const handleProfile = (req, res) => res.send('you are on my  profile');
 
 // const betweenHome = (req,res, next) =>{
 //     console.log('betwSeen');
@@ -26,12 +25,13 @@ app.use(bodyParser.urlencoded({ extended: true }));
 app.use(helmet()); //for security of node apps
 app.use(morgan('dev')); //  http requests logger
 
-app.get('/', handleHome);
 
-app.get('/profile', handleProfile);
 
 //use 'use' instead of get if want to use the router/
+
+app.use("/",globalRouter);
 app.use('/user', userRouter);
+app.use('/video', videoRouter);
 //when  you start listeinng call function handleListening
 // app.listen(PORT, handlelistening);
 
