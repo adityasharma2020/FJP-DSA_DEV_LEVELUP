@@ -58,6 +58,8 @@ public class nextgreaterToRight {
         return ans;
     }
 
-    // alternative solution by sumeet sir ====>
+    // alternative solution by sumeet sir lopping from left to right ====>
 
-}
+    // - ans +
+
+} 
