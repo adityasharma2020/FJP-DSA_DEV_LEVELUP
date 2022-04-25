@@ -77,73 +77,118 @@ class l001 {
         return count;
     }
 
-    public static int mazePathWithJump(int sr,int sc,int er,int ec,int[][] dir,String[] dirS,String psf){
-        if(sr==er && sc==ec){
-            System.out.println((psf));
+    public static int mazePathWithJump(int sr, int sc, int er, int ec, int[][] dir, String[] dirS, String psf) {
+        if (sr == er && sc == ec) {
+            System.out.println(psf);
             return 1;
         }
 
+        int count = 0;
 
-        
-        int count =0;
-
-        for(int d=0;d<dir.length;d++){
-            for(int rad=1;rad<=dir.length;rad++){
-                int r = sr +dir[d][0] * rad;
+        for (int d = 0; d < dir.length; d++) {
+            for (int rad = 1; rad <= dir.length; rad++) {
+                int r = sr + dir[d][0] * rad;
                 int c = sc + dir[d][1] * rad;
 
-
-                if(r>=0  && c>=0 && r<=er && c<=ec){
-                    count+=mazePathWithJump(r, c, er, ec, dir, dirS, psf+dirS[d]+rad);
-                }else{
+                if (r >= 0 && c >= 0 && r <= er && c <= ec) {
+                    count += mazePathWithJump(r, c, er, ec, dir, dirS, psf + dirS[d] + rad);
+                } else {
                     break;
                 }
-                
-            
+
             }
         }
 
         return count;
     }
 
-
-    public static int floodFill(int sr,int sc,int er,int ec,boolean[][] vis,int[][] dir,String[] dirS,String psf){
-        if(sr==er && sc==ec){
+    public static int floodFill(int sr, int sc, int er, int ec, boolean[][] vis, int[][] dir, String[] dirS,
+            String psf) {
+        if (sr == er && sc == ec) {
             System.out.println((psf));
             return 1;
         }
 
-
         vis[sr][sc] = true;
-        int count =0;
+        int count = 0;
 
-        for(int d=0;d<dir.length;d++){
-            for(int rad=1;rad<=dir.length;rad++){
-                int r = sr +dir[d][0] * rad;
+        for (int d = 0; d < dir.length; d++) {
+            for (int rad = 1; rad <= dir.length; rad++) {
+                int r = sr + dir[d][0] * rad;
                 int c = sc + dir[d][1] * rad;
 
-
-                if(r>=0  && c>=0 && r<=er && c<=ec ){
-                    if(!vis[r][c]){
-                        count+=floodFill(r, c, er, ec,vis ,dir, dirS, psf+dirS[d]+rad);
+                if (r >= 0 && c >= 0 && r <= er && c <= ec) {
+                    if (!vis[r][c]) {
+                        count += floodFill(r, c, er, ec, vis, dir, dirS, psf + dirS[d] + rad);
                     }
-                    
-                }else{
+
+                } else {
                     break;
                 }
-                
-            
+
             }
+        }
+
+    }
+
+    public static int floodFillWithJumps(int sr, int sc, int er, int ec, boolean[][] vis, int[][] dir, String[] dirs,
+            String psf) {
+        if (sr == er && sc == ec) {
+            System.out.println(psf);
+            return 1;
+        }
+        int count = 0;
+        int ans = 0;
+        vis[sr][sc] = true;
+        for (int d = 0; d < dir.length; d++) {
+
+            for (int rad = 1; rad <= Math.max(er, ec); rad++) {
+
+                int row = sr + rad * dir[d][0];
+                int col = sc + rad * dir[d][1];
+                if (row >= 0 && col >= 0 && row <= er && col <= ec) {
+                    if (!vis[row][col]) {
+                        count += floodFillWithJumps(row, col, er, ec, vis, dir, dirs, psf + dirS[d] + rad);
+                    }
+                } else {
+                    break;
+                }
+
+            }
+        }
+        if (count < ans) {
+            ans = count;
+        }
+        vis[sr][sc] = false;
+        return ans;
+
+    }
+
+    public static int shortestPath(int sr, int sc, int er, int ec, boolean[][] vis, int[][] dir, String[] dirS,
+            String psf) {
+        if (sr == er && sc == ec) {
+            System.out.println(psf);
+        }
+
+        int count = 0;
+        int shortestPathLen = 0;
+        for (int d = 0; d < dirS.length; d++) {
+            int row = sr + dir[d][0];
+            int col = sc + dir[d][1];
+            for (int r = 1; r <= Math.max(er, ec); r++) {
+
+                if (row >= 0 && col >= 0 && row <= er && col <= ec) {
+                    count += shortestPath(row, col, er, ec, vis, dir, dirS, psf);
+                }
+            }
+        }
+        if (count < shortestPathLen) {
+            shortestPathLen = count;
         }
 
         vis[sr][sc] = false;
-        return count;
+        return shortestPathLen;
     }
-
-
-    
-
-
 
     // public static int floodFill(int sr, int sc, int er, int ec, boolean[][] vis,
     // int[][] dir, String[] dirS,
@@ -194,7 +239,7 @@ class l001 {
     // vis[sr][sc] = false;
     // return count;
     // }
-//, "d", "w", "l", "n", "u", "e"
+    // , "d", "w", "l", "n", "u", "e"
 
     public static void main(String[] args) {
         // System.out.println(mazePath(0, 0, 2, 2, ""));
@@ -202,11 +247,11 @@ class l001 {
 
         int n = scn.nextInt();
         int m = scn.nextInt();
-        int[][] dir = { { -1, 0 }, { 0, -1},{1,0},{0,1}  };
+        int[][] dir = { { -1, 0 }, { 0, -1 }, { 1, 0 }, { 0, 1 } };
         boolean[][] vis = new boolean[n][m];
-      
-        String[] dirS = { "t", "l","d","r" };
-        System.out.println(floodFill(0, 0, n-1, m-1,vis, dir, dirS, ""));
+
+        String[] dirS = { "t", "l", "d", "r" };
+        System.out.println(floodFillWithJumps(0, 0, n - 1, m - 1, vis, dir, dirS, ""));
         // Scanner scn = new Scanner(System.in);
         // int n = scn.nextInt();
         // int m = scn.nextInt();
