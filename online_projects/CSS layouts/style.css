@@ -1,0 +1,19 @@
+body{
+    display:flex;
+    flex-direction: row;
+    justify-content: space-around;
+    align-items: center;
+    height: 100vh ;
+}
+
+.box{
+    background: blue;
+    width: 300px;
+    height: 300px;
+    display:inline-block;
+    color:white;
+}
+
+/* .box:nth-child(3){
+    margin-left: 500px;
+} */
