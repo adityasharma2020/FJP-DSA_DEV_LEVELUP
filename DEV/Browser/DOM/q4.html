@@ -94,16 +94,24 @@
             box-shadow: 0px 0px 6px 5px;
         }
 
+        .card1 p{
+            border: 2px dashed black;
+            width: 90px;
+            height: 50px;
+        }
+
         .card {
             border: 1px solid;
             height: 10rem;
             width: 10rem;
             margin: 2rem;
         }
+        
     </style>
 </head>
 
 <body>
+
     <div class="card" data-color="blue"></div>
     <div class="card" data-color="red"></div>
     <div class="card" data-color="blue"></div>
@@ -114,6 +122,11 @@
     <div class="card" data-color="blue"></div>
     <div class="card" data-color="green"></div>
     <div class="card" data-color="blue"></div>
+    <div class="card card1" data-color="green">
+        <div class="innerbox">
+           <p>Hello from card 1</p>
+       </div>
+   </div>
 
 
 
@@ -121,13 +134,27 @@
         let cards = document.querySelectorAll(".card");
         for(let i=0;i<cards.length;i++){
             cards[i].addEventListener("click",function(event){
-                let classToBeAttached = event.currentTarget.getAttribute('data-color');
+                let classToBeAttached = event.target.getAttribute('data-color');
             
-                event.currentTarget.setAttribute('data-color','used');
+                event.target.setAttribute('data-color','used');
     
-                event.currentTarget.classList.add(classToBeAttached);
+                event.target.classList.add(classToBeAttached);
             });
         }
+
+        let card1=document.querySelector(".card1");
+        card1.addEventListener('click',function(e){
+        // console.log(e);
+        console.log(e.currentTarget);
+        console.log(e.target);
+        let classToBeAttached = event.target.getAttribute('data-color');
+            
+                event.target.setAttribute('data-color','used');
+    
+                event.target.classList.add(classToBeAttached);
+    })
+
+
     </script>
     
 </body>
