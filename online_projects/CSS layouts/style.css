@@ -2,26 +2,28 @@
 .father{
     
    display:grid;
-   grid-template-columns: auto 200px;
-    gap: 10px;
-    grid-template-rows: repeat(4,200px) ;
-    grid-template-areas: 
-    "header header header header"
-    "content content content nav"
-    "content content content nav"
-    "footer footer footer footer";    ;
+   gap: 10px;
+    height: 50vh;
+   
+    grid-template: 
+    "header header header header" 1fr
+    "content content content nav" 1fr 
+    "content content content nav" 1fr 
+    "footer footer footer footer" 1fr /1fr 1fr 1fr 1fr;
+    ;
+   
 }
 .header{
-    grid-area: header;
+   grid-area:header;
 }
 .content{
-    grid-area:content;
+   grid-area:content;
 }
 .nav{
-    grid-area:nav;
+   grid-area: nav;
 }
 .footer{
-    grid-area:footer;
+   grid-area:footer;
 }
 
 .child{
