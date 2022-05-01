@@ -1,5 +1,3 @@
-
-
 <!DOCTYPE html>
 <html lang="en">
 
@@ -118,12 +116,7 @@
             let selectedValue=select.value;
 
             let allTickets=document.querySelectorAll("p");
-            if(selectedValue=='all'){
-                for(let i=0;i<allTickets.length;i++){
-                    allTickets[i].style.display="block"
-                }
-            }
-            else{
+                {
                 for (let i = 0; i < allTickets.length; i++) {
                     if(allTickets[i].getAttribute("data-category")!=selectedValue){
                         //display nhi krni 
