@@ -1,3 +1,4 @@
+<!-- if capslock on show display -->
 <!DOCTYPE html>
 <html lang="en">
 
@@ -7,129 +8,79 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Document</title>
     <style>
-        * {
-            box-sizing: border-box;
+        #pass {
+            display: block;
+            margin: auto;
+            margin-top: 10rem;
+            width: 25rem;
+            height: 3rem;
         }
 
-        body {
-            display: flex;
-            flex-wrap: wrap;
-            justify-content: space-around;
-            padding-top: 5rem;
-        }
-
-        .movies {
-            height: 10rem;
-            width: 10rem;
-            margin: 2rem;
-        }
-
-        .price {
-            background-color: rgb(247 84 33);
-            height: 8rem;
-            padding: 1.5rem;
-            font-size: 2rem;
-        }
-
-        .heading {
-            background-color: rgba(0, 0, 0, 0.856);
-            height: 2rem;
-        }
-
-        .heading,
-        .price {
-            color: white;
+        p {
             text-align: center;
-            margin: 0;
-        }
-
-        select,
-        h1 {
-            position: fixed;
-        }
-
-        h1 {
-            top: 0px;
-        }
-
-        select {
-            width: 8rem;
+            font-size: 3rem;
+            display: none;
         }
     </style>
 </head>
 
 <body>
-    <h1>BOOK MY SHOW</h1>
-    <select>
-        <option value="all">All</option>
-        <option value="action">Action</option>
-        <option value="romance">Romance</option>
-        <option value="comedy">Comedy</option>
-    </select>
+    <!-- <input type="text" id="pass"></input> -->
+    <h1>Input box</h1>
+    <input type="text" id="pass"></input>
+    <!-- <input type="text" id="pass"></input> -->
+    <p>Caps on!</p>
 
-    <div class="movies">
-        <h3 class="heading">Movie-1</h3>
-        <p class="price" data-category="action">Rs. 100</p>
-    </div>
-    <div class="movies">
-        <h3 class="heading">Movie-2</h3>
-        <p class="price" data-category="action">Rs 200</p>
-    </div>
-    <div class="movies">
-        <h3 class="heading">Movie-3</h3>
-        <p class="price" data-category="action">Rs. 150</p>
-    </div>
-    <div class="movies">
-        <h3 class="heading">Movie-4</h3>
-        <p class="price" data-category="romance">Rs 200</p>
-    </div>
-    <div class="movies">
-        <h3 class="heading">Movie-5</h3>
-        <p class="price" data-category="romance">Rs. 150</p>
-    </div>
-    <div class="movies">
-        <h3 class="heading">Movie-6</h3>
-        <p class="price" data-category="romance">Rs. 150</p>
-    </div>
-    <div class="movies">
-        <h3 class="heading">Movie-7</h3>
-        <p class="price" data-category="action">Rs 200</p>
-    </div>
-    <div class="movies">
-        <h3 class="heading">Movie-8</h3>
-        <p class="price" data-category="comedy">Rs. 100</p>
-    </div>
-    <div class="movies">
-        <h3 class="heading">Movie-9</h3>
-        <p class="price" data-category="romance">Rs. 100</p>
-    </div>
-    <div class="movies">
-        <h3 class="heading">Movie-10</h3>
-        <p class="price" data-category="comedy">Rs 200</p>
-    </div>
-
-    <script>
-
-        let select=document.querySelector("select");
-
-        select.addEventListener("change",function(){
-            let selectedValue=select.value;
-
-            let allTickets=document.querySelectorAll("p");
-                {
-                for (let i = 0; i < allTickets.length; i++) {
-                    if(allTickets[i].getAttribute("data-category")!=selectedValue){
-                        //display nhi krni 
-                        allTickets[i].style.display = "none"
-                    }
-                    else{ //agar selectedValue ke equal h 
-                        allTickets[i].style.display = "block"
-                    }
-                }
-            }
-        })
-
-    </script>
 </body>
+
+
+<script>
+    const input = document.getElementById('pass');
+    let message = document.querySelector("p");
+    let isShift = false;
+
+
+    console.log(message);
+    input.addEventListener("keydown", cb);
+    //boolean, wether capslock is on or off
+
+
+    function cb(e) {
+
+
+       
+        if (e.getModifierState("CapsLock")) {
+            message.style.display = "block";
+            e.preventDefault();
+        } else {
+            message.style.display = "none";
+        }
+        console.log(input.value);
+
+
+    }
+
+    //SHIFT
+
+    document.addEventListener("keydown", function (e) {
+        if (e.key == "Shift") {
+            isShift = true;
+        }
+    });
+    document.addEventListener("keyup", function (e) {
+        
+        if (e.key == "Shift") {
+            isShift = false;
+
+        }
+    })
+
+    document.addEventListener("keyup", function (e) {
+        if (e.key == "Shift") {
+            isShift = false;
+        }
+    })
+
+</script>
 
 </html>
