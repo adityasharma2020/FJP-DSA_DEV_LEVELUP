@@ -1,8 +1,7 @@
 import java.io.*;
 import java.util.*;
 
-public class removeLast {
-
+public class removeAt {
   public static class Node {
     int data;
     Node next;
@@ -90,27 +89,27 @@ public class removeLast {
       temp.data = val;
       temp.next = head;
       head = temp;
-      
-      if(size == 0){
+
+      if (size == 0) {
         tail = temp;
       }
 
       size++;
     }
 
-    public void addAt(int idx, int val){
-      if(idx < 0 || idx > size){
+    public void addAt(int idx, int val) {
+      if (idx < 0 || idx > size) {
         System.out.println("Invalid arguments");
-      } else if(idx == 0){
+      } else if (idx == 0) {
         addFirst(val);
-      } else if(idx == size){
+      } else if (idx == size) {
         addLast(val);
       } else {
         Node node = new Node();
         node.data = val;
 
         Node temp = head;
-        for(int i = 0; i < idx - 1; i++){
+        for (int i = 0; i < idx - 1; i++) {
           temp = temp.next;
         }
         node.next = temp.next;
@@ -119,25 +118,45 @@ public class removeLast {
         size++;
       }
     }
-Aditya shamans
-    public void removeLast(){
-      // write your code here
-        if(size==0){
-            System.out.println("list is empty");
-        }else if(size==1){
-            head= null;
-            tail = null;
-            size=0;
-        }else{
-            Node temp = head;
-            for(int i=1;i<size-1;i++){
-                temp = temp.next;
-            }
-            temp.next = null;
-            tail = temp;
-            size--;
+
+    public void removeLast() {
+      if (size == 0) {
+        System.out.println("List is empty");
+      } else if (size == 1) {
+        head = tail = null;
+        size = 0;
+      } else {
+        Node temp = head;
+        for (int i = 0; i < size - 2; i++) {
+          temp = temp.next;
         }
- 
+
+        tail = temp;
+        tail.next = null;
+        size--;
+      }
+    }
+
+    public void removeAt(int idx) {
+      // write your code here
+      if(idx==0){
+        removeFirst();
+      }else if(idx=size-1){
+        head = tail = null;
+       removeLast();
+      }elseif(){
+        System.out.println("invalid input");
+      }else{
+          Node temp =head;
+          for(int i=1;i<i-1;i++){
+              temp =temp.next;
+          }
+          
+          temp.next=temp2.next.next;
+          
+          tail =temp;
+          size--;
+      }
     }
   }
 
@@ -181,9 +200,11 @@ Aditya shamans
         list.addAt(idx, val);
       } else if (str.startsWith("removeLast")) {
         list.removeLast();
-      } 
+      } else if (str.startsWith("removeAt")) {
+        int idx = Integer.parseInt(str.split(" ")[1]);
+        list.removeAt(idx);
+      }
       str = br.readLine();
     }
   }
 }
-
