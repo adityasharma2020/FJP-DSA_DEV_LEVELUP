@@ -1,0 +1,64 @@
+*{
+    box-sizing: border-box;
+}
+
+body{
+    margin: 0;
+    padding: 0;
+}
+
+
+.toolbox-cont{
+    height: 5rem;
+    background-color: gray;
+    display: flex;
+    align-items: center;
+    
+}
+
+.toolbox-cont > *{
+    margin-left: 4rem;
+
+}
+.toolbox-color-cont{
+    height: 3.5rem;
+    width:18rem ;
+    background: rgb(95, 95, 95);
+    display: flex;
+    align-items: center;
+    justify-content: space-evenly;
+}
+
+.action-btn-cont{
+    height: 3.5rem;
+    width:7rem ;
+    background: rgb(70, 72, 72);
+    display: flex;
+    align-items: center;
+    justify-content: space-evenly;
+}
+.action-btn-cont>*{
+    font-size: 2rem;
+    color: azure;
+}
+
+.color{
+    height: 1.5rem;
+    width:3rem;
+
+}
+.lightPink{
+    background-color: lightpink;
+}
+
+.lightblue{
+    background-color: lightblue;
+}
+
+.lightgreen{
+    background-color: lightgreen;
+}
+
+.black{
+    background-color: black;
+}
