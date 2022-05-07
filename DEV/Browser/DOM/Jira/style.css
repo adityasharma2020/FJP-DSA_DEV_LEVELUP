@@ -50,15 +50,50 @@ body{
 .lightPink{
     background-color: lightpink;
 }
+.lightgreen{
+    background-color: lightgreen;
+}
 
 .lightblue{
     background-color: lightblue;
 }
 
-.lightgreen{
-    background-color: lightgreen;
-}
+
 
 .black{
     background-color: black;
+}
+.toolbox-color-cont >*:hover,.action-btn-cont>*:hover{
+    background-color: rgb(235, 225, 225);
+}
+
+.modal-cont{
+    height: 50vh;
+    width: 45vw;
+    background-color: aqua;
+    position: absolute;
+    top: calc((100vh - 50vh)/2);
+    left: calc((100vw - 50vw)/2);
+    display: flex;
+    align-items: center;
+}
+
+textarea{
+    height: 100%;
+    width: 75%;
+    background-color: azure;
+    border: none;
+    resize: none;
+    outline: none;
+    font-size: 2rem;
+
+}
+.priority-color-cont{
+    display: flex;
+    height: 100%;
+    width: 25%;
+    flex-direction: column;
+    justify-content: space-around;
+    align-items: center;
+    background-color: rgb(94, 91, 91);
 }
