@@ -1,4 +1,5 @@
-@import "_variables.scss";
+@import "_variables";
+@import "_mixins";
 body{
     background: $bg;
     background-color: aliceblue;
@@ -8,6 +9,38 @@ a{
     color: $bg;
 }
 
+h1{
+    @include title;
+}
+
 h2{
     color: $bg;
+}
+
+.box {
+    button{
+        color: #9696e1;
+    }
+    &:hover{
+        background-color: green;
+    }
+
+} 
+
+a{
+    
+    &:nth-child(odd){
+        @include links("odd");
+    }
+    &:nth-child(even){
+        @include links("other");
+    }
+}
+
+a{
+
+}
+
+button{
+    
 }

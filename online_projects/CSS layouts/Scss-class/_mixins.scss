@@ -1,0 +1,17 @@
+@mixin title {
+    color: blue;
+    font-size: 24px;
+    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+    margin-bottom: 12px;
+}
+
+@mixin links($word){
+    text-decoration: none;
+    display:block;
+    
+    @if $word =="odd"{
+        color:rgb(148, 148, 181);
+    }@else{
+        color:rgb(217, 46, 46);
+    }
+}
