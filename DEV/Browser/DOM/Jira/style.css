@@ -76,6 +76,7 @@ body{
     left: calc((100vw - 50vw)/2);
     display: flex;
     align-items: center;
+    display: none;
 }
 
 textarea{
@@ -96,4 +97,39 @@ textarea{
     justify-content: space-around;
     align-items: center;
     background-color: rgb(94, 91, 91);
+}
+
+.priority-color{
+    height: 10%;
+    width: 30%;
+}
+
+.active{
+    border : 4px solid red;
+}
+/* .main-cont{
+    display:flex;
+} */
+
+.ticket-cont{
+    height: 12em;
+    width: 15rem;
+    background-color: aliceblue;
+}
+
+.ticket-color{
+    height: 1rem;
+    background-color: rgb(48, 132, 205);
+}
+
+.ticket-id{
+    height: 2rem;
+    background-color: red;
+}
+
+.task-area{
+    height: calc(100% - 1rem - 2rem);
+    font-size : 1.5rem;
+    outline: none;
+    /* overflow-wrap:break-word; */
 }
