@@ -1,17 +1,22 @@
-@mixin title {
-    color: blue;
-    font-size: 24px;
-    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
-    margin-bottom: 12px;
-}
 
-@mixin links($word){
-    text-decoration: none;
-    display:block;
-    
-    @if $word =="odd"{
-        color:rgb(148, 148, 181);
-    }@else{
-        color:rgb(217, 46, 46);
+
+@mixin responsive($device){
+    @if $device == "iphone"{
+        @media screen and (min-width:500px) and(max-width: 690px){
+            @content;
+        }
+    }@else if $device =="tablet"{
+        @media screen and (min-width: 1110px) and(max-width:1120px ){
+            @content;
+        }
+    }@else if $device =="iphone-l"{
+        @media screen and (min-width:500px) and (max-width:690px ) and (orientation:landscape){
+            @content;
+        }
+    }@else if $device =="ipad-l"{
+        @media screen and (min-width: 1110px) and(max-width:1120px ) and (orientation:landscape){
+            @content;
+        }
     }
+
 }

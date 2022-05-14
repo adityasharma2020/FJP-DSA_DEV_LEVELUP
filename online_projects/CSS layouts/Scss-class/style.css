@@ -1,40 +1,10 @@
-body {
-  background: #e7473c;
-  background-color: aliceblue;
-}
-
-a {
-  color: #e7473c;
-}
-
 h1 {
-  color: blue;
-  font-size: 24px;
-  font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
-  margin-bottom: 12px;
+  color: red;
 }
 
-h2 {
-  color: #e7473c;
-}
-
-.box button {
-  color: #9696e1;
-}
-
-.box:hover {
-  background-color: green;
-}
-
-a:nth-child(odd) {
-  text-decoration: none;
-  display: block;
-  color: #9494b5;
-}
-
-a:nth-child(even) {
-  text-decoration: none;
-  display: block;
-  color: #d92e2e;
+@media screen and (min-width: 500px) and (max-width: 690px) {
+  h1 {
+    color: yellow;
+  }
 }
 /*# sourceMappingURL=style.css.map */
