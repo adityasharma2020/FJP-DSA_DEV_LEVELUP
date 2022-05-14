@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <div class="container">
+        this is a container
+    </div>
+
+    time now is  <span id="time"></span>
+
+    <script>
+
+        console.log("this is a tutorial 58");
+        //setTimeout --> allows us to run the function once after the interval of time .
+
+        //setInterval --> allows us to run function repeatdly after the interval of time
+
+        function greet(name,byeText){
+         console.log("hello good morning  " + name +" "+ byeText);
+
+        }
+
+        let timeOut = setTimeout(greet,5000,"aditya", "byebye");
+        console.log(timeOut);
+
+
+        clearTimeout(timeOut);
+
+        setInterval(dispalyTime,1000);
+       
+
+        function dispalyTime(){
+            let time = new Date();
+            console.log(time);
+            document.getElementById("time").innerHTML = time;
+
+        }
+    </script>
+</body>
+</html>
