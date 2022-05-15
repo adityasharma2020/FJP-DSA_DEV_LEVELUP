@@ -1,0 +1,9 @@
+@import "main.css";
+
+body{
+    font-family: Arial, sans-serif
+}
+
+.hidden{
+    display:none;
+}

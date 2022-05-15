@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <style>
+        .cell {
+            border: 1px solid;
+            margin: auto;
+            margin-top: 10rem;
+            height: 20rem;
+            width: 20rem;
+            display: flex;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="cell"></div>
+
+
+    <script>
+        let cell = document.querySelector(".cell");
+        cell.addEventListener("mouseover", function(){
+            cell.style.background ='url(./jail.png)';
+            
+        });
+
+        cell.addEventListener("mouseout", function(){
+            cell.style.background ='none';
+        });
+    </script>
+    
+</body>
+<!-- 
+</html>
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <style>
+        .cell {
+            border: 1px solid;
+            margin: auto;
+            margin-top: 10rem;
+            height: 20rem;
+            width: 20rem;
+            display: flex;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="cell"></div>
+    <p>Style me</p>
+    <script>
+         // Jail The Mouse
+            // Q You are given an empty cell. 
+            //Write a script that whenever the mouse enters 
+            //the cell jail should be drawn over it and it should be removed once it 
+            
+            let cell=document.querySelector(".cell");
+            let p=document.querySelector("p");
+            console.log(p.style);
+            p.style.color="blue";
+            console.log(p.style);
+            cell.addEventListener("mouseover",function(){
+                cell.style.background='url(./jail.png)'
+            });
+
+            cell.addEventListener("mouseout", function () {
+                    cell.style.background = 'none'
+            });
+           
+    </script>
+</body>
+
+</html> -->

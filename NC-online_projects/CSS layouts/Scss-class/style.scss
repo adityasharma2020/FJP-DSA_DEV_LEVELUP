@@ -1,0 +1,11 @@
+@import "_variables";
+@import "_mixins";
+
+
+h1{
+    // @include title;
+    color :red;
+    @include responsive("iphone"){
+        color:yellow;
+    };
+}

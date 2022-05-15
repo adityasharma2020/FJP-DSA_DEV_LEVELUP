@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    
+    <script>
+        let friends = ["a","b", "c"];
+
+        for(let i=0;i<3;i++){
+            console.log("hello" + friends[i]);
+        }
+
+        //using for each loop
+        friends.forEach(function f(element){
+            console.log("heelo from modern js"+element);
+        })
+
+        //using modern js method 2
+        for(element of friends){
+            console.log("hello from modern js again"+element);
+
+        }
+
+        let employee = {
+            name:"aditya",
+            salary: "23",
+            channel:"asdf"
+        }
+        // for in loop used for iterate over objects in js
+        for(key in employee){
+            console.log(`the ${key} of employee is ${employee[key]}`);
+        }
+
+
+        // while loops in js
+        let i=0;
+        while(i<4){
+            console.log(`${i} is less than 4`);
+            i++;
+        }
+        // do while loops in js
+        let j=34;
+        do{
+            console.log(`${j} is less than 4 and we are inside do while loop`)
+            j++;
+        }while(i<4);
+
+
+    </script>
+</body>
+</html>
