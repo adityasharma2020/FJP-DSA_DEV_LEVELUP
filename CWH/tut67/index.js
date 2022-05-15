@@ -13,10 +13,12 @@ const server = http.createServer((req, res) => {
     let url  = req.url;
   console.log(req.url);
 
+
+  
   res.statusCode = 200;
   res.setHeader('Content-Type', 'text/html');
 
-  
+
   if (url == '/') {
     res.end(home);
   } else if (url == '/about') {
