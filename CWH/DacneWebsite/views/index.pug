@@ -1,0 +1,29 @@
+doctype html
+html
+  head
+    title Harry Dance Academy
+    style
+      include ../static/style.css
+  body
+    h1= message
+    body 
+        nav#navbar  
+            ul
+                li #[a(href="/") home]
+                li #[a(href="/") about] 
+                li #[a(href="/") services] 
+                li #[a(href="/") classinfo] 
+                li #[a(href="/") contactus]  
+
+        section#introSection
+         div Welcome to Harry's Dance Academy
+         div.small Eat Sleep Dance Repeat
+        section#sponsorsSection
+        h2 Our Sponsors
+          img(src= './static/img1.png', alt= 'Sponsor Image', class= 'spImage')
+          img(src= '/static/img2.png', alt= 'Sponsor Image', class= 'spImage')
+          img(src= '/staticimg3.png', alt= 'Sponsor Image', class= 'spImage')
+          img(src= '/static/img4.png', alt= 'Sponsor Image', class= 'spImage')
+          
+        footer#footer
+        | Copyright © 2019 HarryAcademy.com | All Rights Reserved
