@@ -1,0 +1,25 @@
+html
+  head
+    title Harry Dance Academy
+    block scripts
+    block style
+  Body
+div#logo
+                img(src="/static/img/logo.png")
+                | HDA
+            li #[a(href="/") Home]
+            li #[a(href="/") About]
+            li #[a(href="/") Services]
+            li #[a(href="/") Class Info]
+            li #[a(href="/") Contact Us]
+
+       block content
+   
+    H1 Contact Us
+      form(action= “/contact”, method= “post, class= “myForm”)
+  <input type="text"class= “name” name="name" placeholder="Enter your name..">
+<input type="phone" class= “myInput” name="phone" placeholder="Enter your name..">
+<input type="email" class= “myInput” name="email" placeholder="Enter your email..">
+<input type="text" name="firstname" placeholder="Your name..">
+      #footer
+        | Copyright 2019 HarryDance Academy | All Rights Reserved
