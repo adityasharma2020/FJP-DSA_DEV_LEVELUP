@@ -19,11 +19,17 @@ public class LinknedList {
         // System.out.println(n1.next);
 
         // Node<Integer> head = createLinkedList();
-        takeInput();
+        Node<Integer> head = takeInput2();
+        
+        // printLinkedList(head);
+        // Node<Integer> newhead = insertNode(head, 50, 0);
+        // printLinkedList(newhead);
 
+
+        delete(head,4);
         // increment(head);
 
-        // printLinkedList(head);
+        printLinkedList(head);
 
         // printithnode(2, head);
     }
@@ -54,9 +60,10 @@ public class LinknedList {
         temp = head;
         while (temp != null) {
 
-            System.out.println(temp.data);
+            System.out.print(temp.data+" ");
             temp = temp.next;
         }
+        System.out.println("");
 
     }
 
@@ -100,7 +107,7 @@ public class LinknedList {
         }
     }
 
-    public static Node<Integer> takeInput() {
+    public static Node<Integer> takeInput1() {
         Scanner scn = new Scanner(System.in);
         int data = scn.nextInt();
 
@@ -109,6 +116,7 @@ public class LinknedList {
             Node<Integer> currentNode = new Node<>(data);
             if (head == null) {
                 head = currentNode;
+
             } else {
                 Node<Integer> tail = head;
                 while (tail.next != null) {
@@ -120,5 +128,61 @@ public class LinknedList {
             data = scn.nextInt();
         }
         return head;
+    }
+
+    public static Node<Integer> takeInput2() {
+        Scanner scn = new Scanner(System.in);
+        int data = scn.nextInt();
+
+        Node<Integer> head = null, tail = null;
+        while (data != -1) {
+            Node<Integer> currentNode = new Node<>(data);
+            if (head == null) {
+                head = currentNode;
+                tail = currentNode;
+            } else {
+                tail.next = currentNode;
+                tail = currentNode;
+            }
+            data  = scn.nextInt();
+
+        }
+
+        return head;
+    }
+
+    public static Node<Integer> insertNode(Node<Integer> head, int data, int i) {
+        Node<Integer> nodeToBeInserted = new Node<Integer>(data);
+        int count=0;
+        if(i == 0){
+            nodeToBeInserted.next = head;
+            return nodeToBeInserted;
+
+        }else{
+            Node<Integer> prev = head;
+
+        while(count  <i-1 && prev != null){
+            count++;
+            prev = prev.next;
+        }
+
+        if(prev != null){
+            nodeToBeInserted.next = prev.next;
+            prev.next = nodeToBeInserted;
+        }
+        }
+        return head;
+    }
+    public static void delete(Node<Integer> head,int pos){
+        Node<Integer> prev = head;
+        int count=0;
+        if(pos == 0){
+
+        }else{
+            while( count <(pos-1) && prev != null){
+                prev = prev.next;
+            }
+            prev.next = prev.next.next;
+        }
     }
 }
