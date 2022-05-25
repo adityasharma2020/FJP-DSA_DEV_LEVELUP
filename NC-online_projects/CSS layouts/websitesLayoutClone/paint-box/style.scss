@@ -1,0 +1,49 @@
+* {
+  box-sizing: border-box;
+}
+img {
+  width: 100%;
+}
+
+body > *:not(.logo):not(.footer) {
+  padding: 0px 141px;
+  
+}
+body{
+  padding-top: 100px;
+}
+
+header {
+  height: 90px;
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  background-color: white;
+
+  display: flex;
+  align-items: center;
+}
+nav {
+  img {
+    padding-right: 150px;
+  }
+  display: flex;
+  width: 100%;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  align-items: center;
+  font-family: proxima nova;
+  font-weight: 300;
+  font-size: 14px;
+
+  ul {
+    display: flex;
+
+    &:first-child {
+      li {
+        margin-right: 40px;
+      }
+    }
+  }
+}
