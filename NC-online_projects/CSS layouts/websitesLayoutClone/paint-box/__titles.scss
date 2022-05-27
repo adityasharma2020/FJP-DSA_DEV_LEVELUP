@@ -1,0 +1,34 @@
+@import '__variables';
+
+%miniTitle {
+  font-family: 'proxima nova';
+  font-weight: 400;
+  font-size: 14px;
+  color: $black;
+  letter-spacing: 1.2px;
+  text-transform: uppercase;
+}
+
+%title {
+  font-family: 'Freight Disp light';
+  font-size: 34px;
+  font-weight: 400;
+  color: #414141;
+  padding-top: 39px;
+  padding-bottom: 69px;
+}
+
+%button {
+  border: 2px solid black;
+  display: inline-block;
+  color: rgb(0, 0, 0);
+  text-decoration: none;
+
+  padding: 20px 40px;
+  transition: all 0.3s linear;
+  @extend %miniTitle;
+  &:hover {
+    background-color: rgb(84, 84, 84);
+    color: white;
+  }
+}
