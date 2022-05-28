@@ -52,7 +52,7 @@ nav {
 
 .wrapper {
   background-image: linear-gradient(rgba(0, 0, 0, 0.4), rgba(0, 0, 0, 0.6)),
-    url(./hero.webp);
+    url(./Hero.gif);
   background-repeat: no-repeat;
   background-size: cover;
   background-position: center;
@@ -92,6 +92,7 @@ nav {
   display: flex;
   justify-content: space-between;
   align-items: center;
+  margin-bottom: 100px;
 
   .under-section__content {
     display: flex;
@@ -114,19 +115,57 @@ nav {
     }
     h2 {
       @extend %title;
+      width: 65%;
     }
     a {
       @extend %button;
-      
     }
-    span{
+    span {
       height: 10px;
       width: 30px;
     }
-    }
   }
+
   img {
     height: 100%;
     width: 50%;
+  }
+}
+
+.inspiration {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+
+  margin-bottom: 200px;
+  h4 {
+    @extend %miniTitle;
+  }
+  h2 {
+    @extend %title;
+  }
+  .product-image {
+    width: 100px;
+
+    border-right: 2px solid $black;
+  }
+
+  .product-title {
+    text-align: center;
+    color: black;
+  }
+  .inspiration-wrapper {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    .border-none {
+      border-right: none;
+    }
+
+    a {
+      text-decoration: none;
+    }
   }
 }

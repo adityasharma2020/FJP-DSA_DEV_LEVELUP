@@ -1,4 +1,4 @@
-.under-section .under-section__wrapper a, nav ul, .wrapper a, .under-section .under-section__wrapper h4 {
+.under-section .under-section__wrapper a, nav ul, .wrapper a, .under-section .under-section__wrapper h4, .inspiration h4 {
   font-family: 'proxima nova';
   font-weight: 400;
   font-size: 14px;
@@ -7,7 +7,7 @@
   text-transform: uppercase;
 }
 
-.under-section .under-section__wrapper h2 {
+.under-section .under-section__wrapper h2, .inspiration h2 {
   font-family: 'Freight Disp light';
   font-size: 34px;
   font-weight: 400;
@@ -96,8 +96,8 @@ nav ul:first-child li {
 }
 
 .wrapper {
-  background-image: -webkit-gradient(linear, left top, left bottom, from(rgba(0, 0, 0, 0.4)), to(rgba(0, 0, 0, 0.6))), url(./hero.webp);
-  background-image: linear-gradient(rgba(0, 0, 0, 0.4), rgba(0, 0, 0, 0.6)), url(./hero.webp);
+  background-image: -webkit-gradient(linear, left top, left bottom, from(rgba(0, 0, 0, 0.4)), to(rgba(0, 0, 0, 0.6))), url(./Hero.gif);
+  background-image: linear-gradient(rgba(0, 0, 0, 0.4), rgba(0, 0, 0, 0.6)), url(./Hero.gif);
   background-repeat: no-repeat;
   background-size: cover;
   background-position: center;
@@ -153,6 +153,7 @@ nav ul:first-child li {
   -webkit-box-align: center;
       -ms-flex-align: center;
           align-items: center;
+  margin-bottom: 100px;
 }
 
 .under-section .under-section__content {
@@ -192,15 +193,68 @@ nav ul:first-child li {
           flex-direction: column;
 }
 
-.under-section .under-section__wrapper .arrow {
-  border: 2px solid black;
-  border: 4px solid black;
-  height: 100%;
-  display: inline-block;
+.under-section .under-section__wrapper h2 {
+  width: 65%;
+}
+
+.under-section .under-section__wrapper span {
+  height: 10px;
+  width: 30px;
 }
 
 .under-section img {
   height: 100%;
   width: 50%;
+}
+
+.inspiration {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  margin-bottom: 200px;
+}
+
+.inspiration .product-image {
+  width: 100px;
+  border-right: 2px solid #414141;
+}
+
+.inspiration .product-title {
+  text-align: center;
+  color: black;
+}
+
+.inspiration .inspiration-wrapper {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: horizontal;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: row;
+          flex-direction: row;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+}
+
+.inspiration .inspiration-wrapper .border-none {
+  border-right: none;
+}
+
+.inspiration .inspiration-wrapper a {
+  text-decoration: none;
 }
 /*# sourceMappingURL=style.css.map */
