@@ -1,4 +1,4 @@
-.under-section .under-section__wrapper a, .inspiration .button a, nav ul, .wrapper a, .under-section .under-section__wrapper h4, .inspiration h4, .blog .blog_content a, .footer span {
+.under-section .under-section__wrapper a, .inspiration .button a, nav ul, .wrapper a, .under-section .under-section__wrapper h4, .inspiration h4, .blog .blog_content a, .footer span, .footer ul li {
   font-family: 'proxima nova';
   font-weight: 400;
   font-size: 14px;
@@ -53,6 +53,7 @@ body {
 }
 
 header {
+  z-index: 999;
   height: 90px;
   position: fixed;
   top: 0;
@@ -372,10 +373,28 @@ nav ul:first-child li {
   -webkit-box-align: center;
       -ms-flex-align: center;
           align-items: center;
+  -webkit-box-flex: 1;
+      -ms-flex-positive: 1;
+          flex-grow: 1;
+  border-right: 1px solid #414141;
+}
+
+.footer .footer__column:last-child {
+  border: none;
 }
 
 .footer span {
   margin-top: 30px;
+  margin-bottom: 50px;
   opacity: 0.6;
+}
+
+.footer ul {
+  text-align: center;
+}
+
+.footer ul li {
+  margin-bottom: 20px;
+  font-size: 10px;
 }
 /*# sourceMappingURL=style.css.map */

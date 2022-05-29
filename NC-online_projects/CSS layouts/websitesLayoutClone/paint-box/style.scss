@@ -19,6 +19,7 @@ body {
 }
 
 header {
+  z-index: 999;
   height: 90px;
   position: fixed;
   top: 0;
@@ -251,11 +252,25 @@ nav {
     flex-direction: column;
     justify-content: center;
     align-items: center;
+    flex-grow: 1;
+    border-right: 1px solid $black;
+      &:last-child{
+        border: none;
+      }
   }
 
   span{
     @extend %miniTitle;
     margin-top: 30px;
+    margin-bottom: 50px;
     opacity: 0.6;
+  }
+  ul{
+    text-align: center;
+    li{
+      margin-bottom: 20px;
+      @extend %miniTitle;
+      font-size: 10px;
+    }
   }
 }
