@@ -1,13 +1,14 @@
-.under-section .under-section__wrapper a, nav ul, .wrapper a, .under-section .under-section__wrapper h4, .inspiration h4 {
+.under-section .under-section__wrapper a, .inspiration .button a, nav ul, .wrapper a, .under-section .under-section__wrapper h4, .inspiration h4, .blog .blog_content a, .footer span {
   font-family: 'proxima nova';
   font-weight: 400;
   font-size: 14px;
   color: #414141;
   letter-spacing: 1.2px;
   text-transform: uppercase;
+  text-decoration: none;
 }
 
-.under-section .under-section__wrapper h2, .inspiration h2 {
+.under-section .under-section__wrapper h2, .inspiration h2, .blog .blog_content h2 {
   font-family: 'Freight Disp light';
   font-size: 34px;
   font-weight: 400;
@@ -16,7 +17,7 @@
   padding-bottom: 69px;
 }
 
-.under-section .under-section__wrapper a {
+.under-section .under-section__wrapper a, .inspiration .button a {
   border: 2px solid black;
   display: inline-block;
   color: black;
@@ -26,7 +27,7 @@
   transition: all 0.3s linear;
 }
 
-.under-section .under-section__wrapper a:hover {
+.under-section .under-section__wrapper a:hover, .inspiration .button a:hover {
   background-color: #545454;
   color: white;
 }
@@ -187,6 +188,7 @@ nav ul:first-child li {
   -webkit-box-align: center;
       -ms-flex-align: center;
           align-items: center;
+  height: 100%;
   -webkit-box-orient: vertical;
   -webkit-box-direction: normal;
       -ms-flex-direction: column;
@@ -224,14 +226,20 @@ nav ul:first-child li {
   margin-bottom: 200px;
 }
 
+.inspiration .button a {
+  margin-top: 100px;
+}
+
 .inspiration .product-image {
   width: 100px;
-  border-right: 2px solid #414141;
+  text-align: center;
+  border-right: 1px solid #414141;
+  margin: 20px;
 }
 
 .inspiration .product-title {
   text-align: center;
-  color: black;
+  color: #414141;
 }
 
 .inspiration .inspiration-wrapper {
@@ -256,5 +264,118 @@ nav ul:first-child li {
 
 .inspiration .inspiration-wrapper a {
   text-decoration: none;
+}
+
+.blog {
+  width: 100%;
+  margin-bottom: 100px;
+  display: -ms-grid;
+  display: grid;
+  -ms-grid-columns: 1fr;
+      grid-template-columns: 1fr;
+  -ms-grid-rows: (1fr)[3];
+      grid-template-rows: repeat(3, 1fr);
+}
+
+.blog .blog__post {
+  background-color: #faf6f6;
+  display: -ms-grid;
+  display: grid;
+  -ms-grid-columns: (1fr)[2];
+      grid-template-columns: repeat(2, 1fr);
+}
+
+.blog .blog__post:nth-child(odd) img {
+  -webkit-box-ordinal-group: 2;
+      -ms-flex-order: 1;
+          order: 1;
+}
+
+.blog .blog_content {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+}
+
+.blog .blog_content h2 {
+  width: 80%;
+}
+
+.blog .blog_content a {
+  font-size: 14px;
+}
+
+.instagram {
+  background-color: #f8dabe;
+}
+
+.gift {
+  background-color: #dee8e9;
+}
+
+.gallery {
+  display: -ms-grid;
+  display: grid;
+  -ms-grid-columns: (1fr)[4];
+      grid-template-columns: repeat(4, 1fr);
+  -ms-grid-rows: (1fr)[2];
+      grid-template-rows: repeat(2, 1fr);
+}
+
+.gallery .gallery__poster img {
+  width: 100%;
+  height: 100%;
+  -webkit-transition: opacity 0.3s linear;
+  transition: opacity 0.3s linear;
+}
+
+.gallery .gallery__poster img:hover {
+  opacity: 0.5;
+}
+
+.footer {
+  margin-top: 50px;
+  padding-top: 100px;
+  padding-bottom: 50px;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  background-color: #faf6f6;
+  -ms-flex-pack: distribute;
+      justify-content: space-around;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+}
+
+.footer .footer__column {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+}
+
+.footer span {
+  margin-top: 30px;
+  opacity: 0.6;
 }
 /*# sourceMappingURL=style.css.map */
