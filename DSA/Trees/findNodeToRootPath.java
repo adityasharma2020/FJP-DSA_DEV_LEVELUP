@@ -111,8 +111,10 @@ public class Main {
     }
     ArrayList<Integer> leftans = nodeToRootPath(node.left, data);
     if(leftans.size() >0){
-      leftans.add(node.data);
+      leftAns.add(node.data);
+      return leftans;
     }
+     
 
     ArrayList<Integer> rightans = nodeToRootPath(node.right, data);
     if(rightans.size() >0){
@@ -124,6 +126,7 @@ public class Main {
    
   }
 
+  
   public static void main(String[] args) throws Exception {
     BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
     int n = Integer.parseInt(br.readLine());
