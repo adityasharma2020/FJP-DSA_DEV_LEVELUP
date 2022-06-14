@@ -1,0 +1,69 @@
+body {
+  background-color: gray;
+  margin: 0px;
+  padding: 0px;
+}
+
+* {
+  color: white;
+}
+
+.container {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -ms-flex-pack: distribute;
+      justify-content: space-around;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+}
+
+img {
+  height: 200px;
+  width: 200px;
+  margin: 0px;
+  padding: 0px;
+}
+
+.gallery-box {
+  border: 4px solid white;
+}
+
+.gallery-box .delete {
+  background-color: red;
+  text-align: center;
+  text-transform: capitalize;
+}
+
+.gallery-box .download {
+  background-color: black;
+  color: white;
+  text-align: center;
+  text-transform: uppercase;
+}
+
+.back {
+  position: fixed;
+  bottom: 10vh;
+  right: 10vw;
+  background-color: black;
+  border: none;
+  color: white;
+  padding: 20px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 16px;
+  margin: 4px 2px;
+  border-radius: 50%;
+}
+
+.back:active {
+  color: white;
+}
+
+.back:hover {
+  color: white;
+}
+/*# sourceMappingURL=style.css.map */
