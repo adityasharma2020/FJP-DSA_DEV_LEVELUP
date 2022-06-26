@@ -18,3 +18,10 @@ function a(){
 a();
 var b = 10;
 console.log(b);
+
+console.log("greet" greet);
+var greet = function(){
+  console.log("hello");
+}
+console.log("greet" greet);
+console.log(a);
