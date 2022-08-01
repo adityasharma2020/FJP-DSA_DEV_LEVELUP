@@ -12,6 +12,8 @@ let removeBtn = document.querySelector('.remove-btn');
 
 lockClass = 'lock-class';
 unlockClass = 'lock-class-open';
+
+
 //to open close modal container
 let isModalPresent = false;
 addBtn.addEventListener('click', function () {
