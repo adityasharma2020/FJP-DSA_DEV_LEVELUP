@@ -8,8 +8,8 @@ body{
 }
 
 .video-cont{
-  height: 100vh;
-  width: 100vw;
+  height: 99vh;
+  width: auto;
   background-color: black;
 }
 
@@ -52,17 +52,66 @@ video{
   border-radius: 50%;
 }
 
-.filter-cont{
-  color: white;
-  position:fixed;
-  background-color: aliceblue;
-
-}
-
-
 .timer-cont{
+  color: aliceblue;
   position:absolute;
   top: 80vh;
   left: 5vw;
-  background-color: aqua;
+  
 }
+.timer{
+  display: none;
+}
+
+.filter-cont{
+  position:absolute;
+  top: 40vh;
+  left: 6vw;
+
+  color: rgb(31, 132, 221);
+  height:16rem;
+  width: 5rem;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+.filter{
+  height: 5rem;
+  width: 4rem;
+  background-image: url(https://picsum.photos/seed/picsum/200/300);
+  background-size: 100% 100%;
+  background-blend-mode :color-burn;
+}
+
+.brown{
+  background-color: rgba(111, 110, 110, 0.647);
+}
+.orange{
+  background-color: rgba(223, 45, 45, 0.725);
+}
+
+.pink{
+  background-color: rgba(255, 53, 53, 0.385);
+}
+
+.transparent{
+  background-color: rgba(0, 0, 0, 0);
+}
+
+.gallery{
+  position: absolute;
+  bottom: 10rem;
+  right: 7rem;
+  
+}
+.gallery :hover{
+  cursor: pointer;
+}
+.material-icons{
+  color: white;
+}
+
+
+
+
