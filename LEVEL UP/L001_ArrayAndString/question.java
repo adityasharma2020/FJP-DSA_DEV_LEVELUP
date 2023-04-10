@@ -52,23 +52,37 @@ public class question {
   }
 
   public static void segereateZeroOnceAndTwo(int[] arr) {
-    int n = arr.length, pt1 = -1, pt2 = -1, itr = 0;
-    while (itr < n) {
+    // int n = arr.length, pt1 = -1, pt2 = -1, itr = 0;
+    // while (itr < n) {
+    // if (arr[itr] == 0) {
+    // swap(arr, ++pt2, itr);
+    // swap(arr,++pt1,pt2);
+    // }
+
+    // if (arr[itr] == 1) {
+    // swap(arr, ++pt2, itr);
+    // }
+
+    // itr++;
+    // }
+
+    int n = arr.length, pt1 = 0, pt2 = n - 1, itr = 0;
+
+    while (itr <=  pt2 ) {
       if (arr[itr] == 0) {
-        swap(arr, ++pt2, itr);
-        swap(arr,++pt1,pt2);
-      }
-      
-      if (arr[itr] == 1) {
-        swap(arr, ++pt2, itr);
+        swap(arr, itr, ++pt1);
+      } else if (arr[pt2] == 2) {
+        swap(arr,pt2--, itr);
+      } else {
+        itr++;
+
       }
 
-      itr++;
     }
   }
 
-  public static  void main(String[] args) {
-    int[] nums = { 0,1,1,1,2,1,0,1,2,2,0,0,2,1,0,0,2,0,0,1,2,2,2 };
+  public static void main(String[] args) {
+    int[] nums = { 0, 1, 1, 1, 2, 1, 0, 1, 2, 2, 0, 0, 2, 1, 0, 0, 2, 0, 0, 1, 2, 2, 2 };
     // rotateByK(7, nums);
     // segregatePositiveAndNegative(nums);
     // segeregateZerosAndOnce(nums);
