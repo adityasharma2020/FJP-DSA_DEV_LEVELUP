@@ -5,7 +5,7 @@ public class q023_optimizedbubblesort {
             int swap = 0;
             for (int j = 0; j < arr.length - 1 - i; j++) {
                 // swapping
-                if (arr[j] > arr[j + 1]) {
+                if (arr[j] < arr[j + 1]) {
                     int temp = arr[j];
                     arr[j] = arr[j + 1];
                     arr[j + 1] = temp;
@@ -26,7 +26,7 @@ public class q023_optimizedbubblesort {
     }
 
     public static void main(String[] args) {
-        int[] arr = { 5, 4, 2, 3, 1 };
+        int[] arr = {3,6,2,1,8,7,4,5,3,1};
         bubbleSort(arr);
         printArr(arr);
     }
