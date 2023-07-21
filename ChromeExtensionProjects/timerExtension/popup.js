@@ -32,12 +32,12 @@ startBtn.addEventListener("click", () => {
 });
 
 stopBtn.addEventListener("click", () => {
-    chrome.storage.local.set({
-        isRunning: false,
-    });
+  chrome.storage.local.set({
+    isRunning: false,
   });
+});
 
-  resetBtn.addEventListener("click", () => {
+resetBtn.addEventListener("click", () => {
   chrome.storage.local.set({
     timer: 0,
     isRunning: false,
