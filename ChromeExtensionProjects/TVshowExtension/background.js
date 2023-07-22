@@ -1,26 +1,35 @@
 chrome.runtime.onInstalled.addListener((details) => {
+  chrome.storage.local.set({
+    shows: [],
+  });
   chrome.contextMenus.create({
     id: "contextMenu1",
-    title: "Text context menu",
+    title: "Search TV shows",
+    contexts: ["page", "selection"],
+  });
+
+  //   second context menu
+  chrome.contextMenus.create({
+    title: "read this text",
+    id: "contextMenu2",
     contexts: ["page", "selection"],
   });
 
   chrome.contextMenus.onClicked.addListener((event) => {
-    console.log(event);
-    chrome.tabs.create({
-      url: `https://www.youtube.com/results?search_query=${event.selectionText}`,
-    });
+    if (event.menuItemId === "contextMenu1") {
+      fetch(`https://api.tvmaze.com/search/shows?q=${event.selectionText}`)
+        .then((res) => res.json())
+        .then((data) => {
+          console.log(data);
+          chrome.storage.local.set({
+            shows: data,
+          });
+        });
+    } else if (event.menuItemId === "contextMenu2") {
+      chrome.tts.speak(event.selectionText, {
+        rate: 1,
+        lang: "hi-IN",
+      });
+    }
   });
-});
-
-console.log("background script runnig");
-
-chrome.storage.local.get(["text"], (res) => {
-  console.log(res);
-});
-
-chrome.runtime.onMessage.addListener((msg, sender, sendResponse) => {
-  console.log(msg);
-  console.log(sender);
-  console.log(sendResponse);
 });
