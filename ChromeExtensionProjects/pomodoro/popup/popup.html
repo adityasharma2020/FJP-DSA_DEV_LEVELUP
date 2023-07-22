@@ -2,21 +2,122 @@
 <html lang="en">
   <head>
     <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Todo List 2022 with LocalStorage</title>
+    <!-- CSS Import -->
     <link rel="stylesheet" href="popup.css" />
-    <title>Pomodoro Timer</title>
+    <!-- End of CSS Import -->
+    <!-- Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Fira+Sans:ital,wght@0,400;0,700;0,900;1,400&family=Montserrat:ital,wght@0,400;0,700;0,900;1,400&display=swap"
+      rel="stylesheet"
+    />
+    <!-- End of Fonts -->
   </head>
   <body>
-    <div class="header">
-      <img src="../icon.png" />
-    </div>
-    <h1 id="time">00:00</h1>
-    <div id="btn-container">
-      <button id="start-timer-btn">Start Timer</button>
-      <button id="reset-timer-btn">Reset Timer</button>
-      <button id="add-task-btn">Add Task</button>
-    </div>
-    <div id="task-container"></div>
+    <!-- App Wrapper -->
+    <main class="app">
+      <!-- Greeting -->
+      <section class="greeting">
+        <h2 class="title">
+          What's up, <input type="text" id="name" placeholder="Name here" />
+        </h2>
+      </section>
+      <!-- End of Greeting -->
+
+      <div class="container">
+        <div class="card">
+          <div class="card-header">
+            <h1>Pomodoro Timer</h1>
+            <div class="card-header-buttons">
+              <button
+                id="buttonTypePomodoro"
+                class="active"
+                onclick="setPomodoroType(TIMER_TYPE_POMODORO);"
+              >
+                Pomodoro
+              </button>
+
+              <button
+                id="buttonTypeShortBreak"
+                onclick="setPomodoroType(TIMER_TYPE_SHORT_BREAK);"
+              >
+                Short Break
+              </button>
+            </div>
+          </div>
+
+          <div class="card-body">
+            <div id="circularProgressBar" class="progress-bar">
+              <div class="progress-bar-inner">
+                <h2 class="progress-value">25:00</h2>
+              </div>
+            </div>
+          </div>
+
+          <div class="card-footer">
+            <button class="btn-sucess" onclick="startTimer();">Start</button>
+            <button class="btn-danger" onclick="stopTimer();">Stop</button>
+            <button onclick="resetTimer();">Reset</button>
+          </div>
+        </div>
+      </div>
+
+      <!-- New Todo -->
+      <section class="create-todo">
+        <h3>CREATE A TODO</h3>
+        <form id="new-todo-form">
+          <h4>What's on your todo?</h4>
+          <input
+            type="text"
+            placeholder="e.g. Get some milk"
+            name="content"
+            id="content"
+          />
+
+          <h4>Pick a category</h4>
+          <div class="options">
+            <label>
+              <input
+                type="radio"
+                name="category"
+                id="category1"
+                value="business"
+              />
+              <span class="bubble business"></span>
+              <div>Business</div>
+            </label>
+            <label>
+              <input
+                type="radio"
+                name="category"
+                id="category2"
+                value="personal"
+              />
+              <span class="bubble personal"></span>
+              <div>Personal</div>
+            </label>
+          </div>
+
+          <input type="submit" value="Add todo" />
+        </form>
+      </section>
+      <!-- End of New Todo -->
+
+      <!-- Todo List -->
+      <section class="todo-list">
+        <h3>TODO LIST</h3>
+        <div class="list" id="todo-list"></div>
+      </section>
+      <!-- End of Todo List -->
+    </main>
+    <!-- End of App Wrapper -->
+
+    <!-- JS Import -->
+    <!-- <script src="popup.js"></script> -->
+    <!-- End of JS Import -->
   </body>
-  <script src="popup.js"></script>
 </html>
