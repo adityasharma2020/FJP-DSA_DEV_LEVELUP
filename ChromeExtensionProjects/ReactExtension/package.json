@@ -1,0 +1,15 @@
+{
+  "name": "reactextension",
+  "version": "1.0.0",
+  "description": "react chrome extensions",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "aditya",
+  "license": "ISC",
+  "devDependencies": {
+    "react": "^18.2.0",
+    "tsc": "^2.0.4"
+  }
+}
