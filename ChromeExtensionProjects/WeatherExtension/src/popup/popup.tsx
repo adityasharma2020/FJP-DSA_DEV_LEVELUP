@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import React, { useState, useEffect } from 'react'
 import 'fontsource-roboto'
 import {
   TextField,
@@ -12,28 +12,37 @@ import { AddCircleOutline as AddIcon } from '@material-ui/icons'
 import ReactDOM from 'react-dom'
 import './popup.css'
 import WeatherCard from './weatherCard'
+import { setStorageCities, getStorageCities } from '../utils/storage'
 
 const App: React.FC<{}> = () => {
-  const [cities, setCities] = useState<string[]>([
-    'toronto',
-    'new York',
-    'error',
-  ])
+  const [cities, setCities] = useState<string[]>(['Delhi'])
 
   const [cityInput, setCityInput] = useState<string>('')
+
+  useEffect(() => {
+    getStorageCities().then((cities) => {
+      setCities(cities)
+    })
+  })
 
   const handleCityButtonClick = () => {
     if (cityInput === '') {
       return
     }
 
-    setCities([...cities, cityInput])
-    setCityInput('')
+    const updatedCities = [...cities, cityInput]
+    setStorageCities(updatedCities).then(() => {
+      setCities(updatedCities)
+      setCityInput('')
+    })
   }
 
   const handleCityDeleteButtonClick = (index: number) => {
     cities.splice(index, 1)
-    setCities([...cities])
+    const updatedCities = [...cities]
+    setStorageCities(updatedCities).then(() => {
+      setCities(updatedCities)
+    })
   }
 
   return (

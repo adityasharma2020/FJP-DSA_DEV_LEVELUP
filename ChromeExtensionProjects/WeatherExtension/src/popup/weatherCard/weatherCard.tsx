@@ -39,12 +39,20 @@ const weatherCard: React.FC<{
   const [cardState, setCardState] = useState<WeatherCardState>('loading')
 
   useEffect(() => {
+    let isMounted = true
     fetchOpenWeatherData(city)
       .then((data) => {
-        setWeatherData(data)
-        setCardState('ready')
+        if (isMounted) {
+          setWeatherData(data)
+          setCardState('ready')
+        }
       })
       .catch((err) => setCardState('error'))
+
+    // Clean-up:
+    return () => {
+      isMounted = false
+    }
   }, [city])
 
   if (cardState == 'loading' || cardState == 'error') {
