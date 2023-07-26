@@ -1,6 +1,8 @@
 import React, { useState } from 'react'
 import './Board.css'
 
+
+
 const BOARD_SIZE = 10
 
 const Board = () => {
@@ -15,7 +17,10 @@ const Board = () => {
         {board.map((row, rowIdx) => (
           <div key={rowIdx} className='row'>
             {row.map((cell, cellIdx) => (
-              <div key={cellIdx} className='cell'></div>
+              <div
+                key={cellIdx}
+                className={`cell ${false ? 'food-cell' : ''}`}
+              ></div>
             ))}
           </div>
         ))}
