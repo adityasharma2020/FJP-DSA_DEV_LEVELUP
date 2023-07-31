@@ -26,26 +26,58 @@ body {
   display: flex;
   align-items: center;
   padding-left: 1rem;
+  overflow-y: hidden;
+  overflow-x: scroll;
+}
+.cellprop-actions-cont::-webkit-scrollbar {
+  height: 2px;
+}
+.cellprop-actions-cont::-webkit-scrollbar-thumb {
+  background-color: #247147;
+  border-radius: 30px;
+}
+.cellprop-actions-cont::-webkit-scrollbar-track {
+  background-color: #97ccaf;
 }
 
 .cellprop-actions-cont > * {
   display: inline-block;
   margin-right: 1rem;
 }
+.cellprop-actions-cont > *:hover {
+  cursor: pointer;
+}
+
 .cellprop-actions-cont > select {
   border: none;
   border-radius: 3px;
   outline: none;
 }
 .cellprop-actions-cont > span {
-  font-size: 1.9vw;
+  font-size: 1.5rem;
 }
+
 .font-family-prop {
   padding: 0.2rem;
 }
 .font-size-pro {
   padding: 0.2rem;
 }
+
+.color-prop {
+  position: relative;
+}
+
+.color-prop > input {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 1.5rem;
+  height: 100%;
+  opacity: 0;
+  cursor: pointer;
+}
+
 /* -----------------------fourmula actions-------------------------- */
 .fourmula-actions-cont {
   height: 2rem;
@@ -80,10 +112,14 @@ body {
   height: 3rem;
   background-color: #ecf0f1;
   display: flex;
+  border-top: 1px solid #79c199;
   align-items: center;
   padding-left: 0.5rem;
-  padding-right: 0.5rem;
+
   gap: 1rem;
+  position: fixed;
+  bottom: 0;
+  left: 0;
 }
 
 .sheet-actions-cont > * {
@@ -91,6 +127,7 @@ body {
 }
 .sheet-add-icon {
   width: 2vw;
+  padding-right: 1rem;
 }
 .sheets-folder-cont {
   display: flex;
@@ -174,4 +211,8 @@ body {
   width: 5rem;
   border: 1px solid #dfe4ea;
   outline: none;
+  overflow: scroll;
+}
+.cell::-webkit-scrollbar {
+  display: none;
 }

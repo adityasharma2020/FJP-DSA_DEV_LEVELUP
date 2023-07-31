@@ -27,6 +27,10 @@ for (let i = 0; i < rows; i++) {
     let cell = document.createElement('div')
     cell.setAttribute('class', 'cell')
     cell.setAttribute('contenteditable', 'true')
+    cell.setAttribute("spellcheck",false)
+    // these two attributes are for cell and storage identification
+    cell.setAttribute('rid', i)
+    cell.setAttribute('cid', j)
     rowCont.appendChild(cell)
     addEventForAddressBarDisplay(cell, i, j)
   }
@@ -41,3 +45,7 @@ function addEventForAddressBarDisplay(cell, i, j) {
     addressBar.value = `${colID}${rowID}`
   })
 }
+
+// by default first cell will be selected via dom
+let firstCell = document.querySelector('.cell');
+firstCell.click();
