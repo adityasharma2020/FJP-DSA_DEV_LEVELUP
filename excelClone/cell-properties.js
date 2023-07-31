@@ -12,6 +12,9 @@ for (let i = 0; i < rows; i++) {
       fontSize: '14',
       fontColor: '#000000',
       BGcolor: '#ECF0F1', //just for indication purposes
+      value: '',
+      fourmula: '',
+      selected: false,
     }
     sheetRow.push(cellProp)
   }
@@ -38,9 +41,10 @@ let inactiveColorProp = '#ecf0f1'
 //application of two way binding
 
 // attaching property listeners
+
 bold.addEventListener('click', (e) => {
   let address = addressBar.value
-  let [cell, cellProp] = activeCell(address)
+  let [cell, cellProp] = getCellAndCellProp(address)
 
   //   modification
   cellProp.bold = !cellProp.bold //Data change
@@ -52,7 +56,7 @@ bold.addEventListener('click', (e) => {
 
 italic.addEventListener('click', (e) => {
   let address = addressBar.value
-  let [cell, cellProp] = activeCell(address)
+  let [cell, cellProp] = getCellAndCellProp(address)
 
   //   modification
   cellProp.italic = !cellProp.italic //Data change
@@ -64,7 +68,7 @@ italic.addEventListener('click', (e) => {
 
 underline.addEventListener('click', (e) => {
   let address = addressBar.value
-  let [cell, cellProp] = activeCell(address)
+  let [cell, cellProp] = getCellAndCellProp(address)
 
   //   modification
   cellProp.underline = !cellProp.underline //Data change
@@ -76,7 +80,7 @@ underline.addEventListener('click', (e) => {
 
 fontSize.addEventListener('change', (e) => {
   let address = addressBar.value
-  let [cell, cellProp] = activeCell(address)
+  let [cell, cellProp] = getCellAndCellProp(address)
 
   //modification
   cellProp.fontSize = fontSize.value
@@ -86,7 +90,7 @@ fontSize.addEventListener('change', (e) => {
 
 fontFamily.addEventListener('change', (e) => {
   let address = addressBar.value
-  let [cell, cellProp] = activeCell(address)
+  let [cell, cellProp] = getCellAndCellProp(address)
 
   //modification
   cellProp.fontFamily = fontFamily.value
@@ -96,7 +100,7 @@ fontFamily.addEventListener('change', (e) => {
 
 fontColor.addEventListener('change', (e) => {
   let address = addressBar.value
-  let [cell, cellProp] = activeCell(address)
+  let [cell, cellProp] = getCellAndCellProp(address)
 
   cellProp.fontColor = fontColor.value
   cell.style.color = cellProp.fontColor
@@ -105,7 +109,7 @@ fontColor.addEventListener('change', (e) => {
 
 BGcolor.addEventListener('change', (e) => {
   let address = addressBar.value
-  let [cell, cellProp] = activeCell(address)
+  let [cell, cellProp] = getCellAndCellProp(address)
 
   cellProp.BGcolor = BGcolor.value
   cell.style.backgroundColor = cellProp.BGcolor
@@ -115,7 +119,7 @@ BGcolor.addEventListener('change', (e) => {
 alignment.forEach((alignElem) => {
   alignElem.addEventListener('click', (e) => {
     let address = addressBar.value
-    let [cell, cellProp] = activeCell(address)
+    let [cell, cellProp] = getCellAndCellProp(address)
 
     let alignValue = e.target.getAttribute('alignment')
     cellProp.alignment = alignValue
@@ -151,7 +155,12 @@ function addListenerToAttachCellProperties(cell) {
   cell.addEventListener('click', (e) => {
     let address = addressBar.value
     let [rid, cid] = decodeRIDCIDFromAddress(address)
-    let cellProp = sheetDB[rid][cid];
+    let cellProp = sheetDB[rid][cid]
+    cellProp.selected = true
+    // a border to highlight that cell
+    cell.style.border = cellProp.selected
+      ? '1px solid blue'
+      : '1px solid #dfe4ea'
     //-------apply cell properties-------------
     cell.style.fontWeight = cellProp.bold ? 'bold' : 'normal'
     cell.style.fontStyle = cellProp.italic ? 'italic' : 'normal'
@@ -165,7 +174,7 @@ function addListenerToAttachCellProperties(cell) {
     //   ------apply UI properties to all containers---------
     bold.style.backgroundColor = cellProp.bold //UI change part-2
       ? activeColorProp
-      : inactiveColorProp 
+      : inactiveColorProp
 
     italic.style.backgroundColor = cellProp.italic //UI change part-2
       ? activeColorProp
@@ -200,7 +209,7 @@ function addListenerToAttachCellProperties(cell) {
   })
 }
 
-function activeCell(address) {
+function getCellAndCellProp(address) {
   let [rid, cid] = decodeRIDCIDFromAddress(address)
   //   access cell and storage object
   let cell = document.querySelector(`.cell[rid="${rid}"][cid="${cid}"]`)
@@ -213,3 +222,5 @@ function decodeRIDCIDFromAddress(address) {
   let cid = Number(address.charCodeAt(0)) - 65 //"A" => 65
   return [rid, cid]
 }
+
+// -------------------------------------------------
