@@ -19,21 +19,40 @@ for (let i = 0; i < rows; i++) {
 let fourmulaBar = document.querySelector('.fourmula-bar')
 
 fourmulaBar.addEventListener('keydown', (e) => {
-  let inputFoumula = fourmulaBar.value
+  let inputFormula = fourmulaBar.value
   if (e.key == 'Enter' && fourmulaBar.value) {
-    let evaluatedValue = evaluateFourmula(inputFoumula)
+    let evaluatedValue = evaluateFourmula(inputFormula)
+
+    
 
     // to update UI and cellProp in DB
-    setCellUIAndCellProp(evaluatedValue, inputFoumula)
+    setCellUIAndCellProp(evaluatedValue, inputFormula)
+    addChildToParent(inputFormula)
+    console.log(sheetDB);
   }
 })
 
+function removeChildFromParent(fo)
+
+function addChildToParent(fourmula){
+    // every dependecy in the fourmula is parent of current cell
+    let childAddress = addressBar.value;
+    let encodedFourmula = fourmula.split(" ");
+    for(let i=0;i<encodedFourmula.length;i++){
+        let asciiValue = encodedFourmula[i].charCodeAt(0);
+        if(asciiValue>=65 && asciiValue <=95){
+            let [parentCell,parentCellProp] = getCellAndCellProp(encodedFourmula[i])
+            parentCellProp.children.push(childAddress);
+        }
+    }
+}
+ 
 function evaluateFourmula(fourmula) {
   let encodedFourmula = fourmula.split(' ')
   for (let i = 0; i < encodedFourmula.length; i++) {
     //chatrcode of 0th index of every string
     let asciiValue = encodedFourmula[i].charCodeAt(0)
-    console.log(asciiValue)
+    
     if (asciiValue >= 65 && asciiValue <= 95) {
       let [cell, cellProp] = getCellAndCellProp(encodedFourmula[i])
       encodedFourmula[i] = cellProp.value

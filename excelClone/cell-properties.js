@@ -15,6 +15,7 @@ for (let i = 0; i < rows; i++) {
       value: '',
       fourmula: '',
       selected: false,
+      children: []
     }
     sheetRow.push(cellProp)
   }
