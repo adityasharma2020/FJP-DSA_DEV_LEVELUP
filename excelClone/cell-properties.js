@@ -15,7 +15,7 @@ for (let i = 0; i < rows; i++) {
       value: '',
       fourmula: '',
       selected: false,
-      children: []
+      children: [],
     }
     sheetRow.push(cellProp)
   }
@@ -35,11 +35,31 @@ let alignment = document.querySelectorAll('.alignment')
 let leftAlign = alignment[0]
 let centerAlign = alignment[1]
 let rightAlign = alignment[2]
-
+let fourmulaBar = document.querySelector('.fourmula-bar')
 let activeColorProp = '#d1d8e0'
 let inactiveColorProp = '#ecf0f1'
-
+let generateDependencyButton = document.querySelector('.dependecies-button')
 //application of two way binding
+generateDependencyButton.addEventListener('click', () => {
+  let firstCell = document.querySelector(`.cell[rid="${0}"][cid="${0}"]`)
+
+  firstCell.innerHTML = 1
+  for (let i = 0; i < rows; i++) {
+    for (let j = 1; j < cols; j++) {
+      let previousCell = document.querySelector(
+        `.cell[rid="${i}"][cid="${j - 1}"]`
+      )
+      let currentCell = document.querySelector(`.cell[rid="${i}"][cid="${j}"]`)
+      currentCell.innerText = Number(previousCell.innerText) + 1
+      let rowID = i+1
+      let colID = String.fromCharCode(65 + j-1)
+      let address = `${colID}${rowID}`
+      sheetDB[i][j].children.push(address)
+      sheetDB[i][j].value = 
+    }
+  }
+  console.log(sheetDB)
+})
 
 // attaching property listeners
 
@@ -161,7 +181,7 @@ function addListenerToAttachCellProperties(cell) {
     // a border to highlight that cell
     cell.style.border = cellProp.selected
       ? '1px solid blue'
-      : '1px solid #dfe4ea'
+      : '1px solid #c9cdd3'
     //-------apply cell properties-------------
     cell.style.fontWeight = cellProp.bold ? 'bold' : 'normal'
     cell.style.fontStyle = cellProp.italic ? 'italic' : 'normal'
@@ -207,6 +227,9 @@ function addListenerToAttachCellProperties(cell) {
         rightAlign.style.backgroundColor = activeColorProp
         break
     }
+
+    fourmulaBar.value = cellProp.fourmula
+    console.log('cell:' + cell.innerText)
   })
 }
 

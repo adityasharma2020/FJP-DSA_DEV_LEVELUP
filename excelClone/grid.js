@@ -6,6 +6,7 @@ let addressRowCont = document.querySelector('.address-row-cont')
 let cellsCont = document.querySelector('.cells-cont')
 let addressBar = document.querySelector('.address-bar')
 
+
 for (let i = 0; i < rows; i++) {
   let addressCol = document.createElement('div')
   addressCol.setAttribute('class', 'address-col')
@@ -27,7 +28,7 @@ for (let i = 0; i < rows; i++) {
     let cell = document.createElement('div')
     cell.setAttribute('class', 'cell')
     cell.setAttribute('contenteditable', 'true')
-    cell.setAttribute("spellcheck",false)
+    cell.setAttribute('spellcheck', false)
     // these two attributes are for cell and storage identification
     cell.setAttribute('rid', i)
     cell.setAttribute('cid', j)
@@ -38,6 +39,8 @@ for (let i = 0; i < rows; i++) {
   cellsCont.appendChild(rowCont)
 }
 
+
+
 function addEventForAddressBarDisplay(cell, i, j) {
   cell.addEventListener('click', (e) => {
     let rowID = i + 1
@@ -47,5 +50,5 @@ function addEventForAddressBarDisplay(cell, i, j) {
 }
 
 // by default first cell will be selected via dom
-let firstCell = document.querySelector('.cell');
-firstCell.click();
+let firstCell = document.querySelector('.cell')
+firstCell.click()
