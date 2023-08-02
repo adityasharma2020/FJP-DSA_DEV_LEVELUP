@@ -1,36 +1,29 @@
-//server instantiate
 const express = require('express')
 const app = express()
 
-//used to parse req.body in expresss ==> for put and post
-const bodyParser = require('body-parser')
+// load config file from env
+require('dotenv').config();
+const PORT = process.env.PORT || 4000
 
-// specifically parse JSON data and add it to req.body
-app.use(bodyParser.json())
+//middleware to parse json request
+app.use(express.json())
 
-// activate the server at port 3000
-app.listen(3000, () => {
-  console.log('server started at port 3000')
+//import routes for TODO API
+const todoRoutes = require('./routes/todos')
+
+//mount the todo API routess i.e define what directory structures we want
+app.use('/api/v1', todoRoutes)
+
+//start server
+app.listen(PORT, () => {
+  console.log(`started at port ${PORT}`)
 })
 
-// routes
+//connect to database
+const dbConnect = require('./config/database')
+dbConnect()
+
+//default route of our application
 app.get('/', (req, res) => {
-  res.send('hello jee,kaise ho saree')
+  res.send(`<h1>this is our homepage</h1>`)
 })
-
-app.post('/api/cars', (req, res) => {
-  const { name, brand } = req.body
-  console.log(name)
-  console.log(brand)
-  res.send('car submitted successfully')
-})
-
-// connect it to our database
-const mongoose = require('mongoose')
-mongoose
-  .connect('mongodb://localhost:27017/MyNewDatabase', {
-    useNewUrlParser: true,
-    useUnifiedTopology: true,
-  })
-  .then(() => console.log('connection successful'))
-  .catch((error) => console.log(error))
