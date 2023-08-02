@@ -6,7 +6,6 @@ let addressRowCont = document.querySelector('.address-row-cont')
 let cellsCont = document.querySelector('.cells-cont')
 let addressBar = document.querySelector('.address-bar')
 
-
 for (let i = 0; i < rows; i++) {
   let addressCol = document.createElement('div')
   addressCol.setAttribute('class', 'address-col')
@@ -39,8 +38,6 @@ for (let i = 0; i < rows; i++) {
   cellsCont.appendChild(rowCont)
 }
 
-
-
 function addEventForAddressBarDisplay(cell, i, j) {
   cell.addEventListener('click', (e) => {
     let rowID = i + 1
@@ -52,3 +49,39 @@ function addEventForAddressBarDisplay(cell, i, j) {
 // by default first cell will be selected via dom
 let firstCell = document.querySelector('.cell')
 firstCell.click()
+
+// -------------------
+
+// // add  generate  some data in the cells
+let generateDependencyButton = document.querySelector('.dependecies-button')
+generateDependencyButton.addEventListener('click', () => {
+  let firstCell = document.querySelector(`.cell[rid="${0}"][cid="${0}"]`)
+  sheetDB[0][0].value = 1
+  firstCell.innerText = sheetDB[0][0].value
+  for (let i = 1; i < 10; i++) {
+    let cellProp = sheetDB[0][i].value
+    let cell = document.querySelector(`.cell[rid="${0}"][cid="${i}"]`)
+    let previousCell = document.querySelector(
+      `.cell[rid="${0}"][cid="${i - 1}"]`
+    )
+    sheetDB[0][i - 1].children.push(childrenAddress(0, i))
+    sheetDB[0][i].fourmula = `${childrenAddress(0, i - 1)} + 1`
+    let previousValue = Number(sheetDB[0][i - 1].value)
+    cell.innerText = previousValue + 1
+    sheetDB[0][i].value = previousValue + 1
+    // cell.style.fontWeight = cellProp.bold ? 'bold' : 'normal'
+    cell.style.fontStyle = cellProp.italic ? 'italic' : 'normal'
+    cell.style.textDecoration = cellProp.underline ? 'underline' : 'none'
+    cell.style.fontSize = cellProp.fontSize + 'px'
+    cell.style.fontFamily = cellProp.fontFamily
+    cell.style.color = cellProp.fontColor
+    cell.style.backgroundColor = cellProp.BGcolor
+    cell.style.textAlign = cellProp.alignment
+  }
+})
+
+function childrenAddress(i, j) {
+  let rowID = i + 1
+  let colID = String.fromCharCode(65 + j)
+  return `${colID}${rowID}`
+}

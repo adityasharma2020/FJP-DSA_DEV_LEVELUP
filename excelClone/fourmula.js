@@ -10,12 +10,25 @@ for (let i = 0; i < rows; i++) {
       //removing the border as soon as that cell got blured
       cellProp.selected = false
       cell.style.border = '1px solid #c9cdd3'
-      if (enteredData === cellProp.value) return
-      cellProp.value = enteredData
-      // if data modifies remove P-C relation , make fourmula empty , also update children with new modified values
-      removeChildFromParent(cellProp.fourmula)
-      cellProp.fourmula = ''
-      updateChildrenCells(address)
+      if (Number(enteredData) === Number(cellProp.value)) {
+        console.log(
+          'entered data: ' + enteredData + ' cellProp Value: ' + cellProp.value
+        )
+        return
+      } else {
+        console.log(
+          'entered dddddddddddata: ' +
+            enteredData +
+            ' cellProp vvvvvvvvvvvvvvvValue: ' +
+            cellProp.value
+        )
+        cellProp.value = enteredData
+        // if data modifies remove P-C relation , make fourmula empty , also update children with new modified values
+        removeChildFromParent(cellProp.fourmula)
+        cellProp.fourmula = ''
+        updateChildrenCells(address)
+        console.log(sheetDB)
+      }
     })
   }
 }
@@ -32,7 +45,7 @@ fourmulaBar.addEventListener('keydown', (e) => {
   const sanitizedInput = formattedInput.trim().replace(/\s+/g, ' ')
 
   // Step 3: Ensure Space between Variables and Operators
-  inputFormula = sanitizedInput
+  let newinputFormula = sanitizedInput
     .replace(/\(/g, '( ')
     .replace(/\)/g, ' )')
     .replace(/([A-Z]+\d+)\s*([+\-*/])/g, '$1 $2 ')
@@ -50,7 +63,6 @@ fourmulaBar.addEventListener('keydown', (e) => {
     // to update UI and cellProp in DB
     setCellUIAndCellProp(evaluatedValue, inputFormula, address)
     addChildToParent(inputFormula)
-    console.log(sheetDB)
 
     updateChildrenCells(address)
   }
@@ -113,7 +125,6 @@ function evaluateFourmula(fourmula) {
 
   let decodedFourmula = encodedFourmula.join(' ')
 
-  console.log(decodedFourmula)
   return eval(decodedFourmula)
 }
 
