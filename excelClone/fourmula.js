@@ -11,17 +11,8 @@ for (let i = 0; i < rows; i++) {
       cellProp.selected = false
       cell.style.border = '1px solid #c9cdd3'
       if (Number(enteredData) === Number(cellProp.value)) {
-        console.log(
-          'entered data: ' + enteredData + ' cellProp Value: ' + cellProp.value
-        )
         return
       } else {
-        console.log(
-          'entered dddddddddddata: ' +
-            enteredData +
-            ' cellProp vvvvvvvvvvvvvvvValue: ' +
-            cellProp.value
-        )
         cellProp.value = enteredData
         // if data modifies remove P-C relation , make fourmula empty , also update children with new modified values
         removeChildFromParent(cellProp.fourmula)
@@ -33,23 +24,11 @@ for (let i = 0; i < rows; i++) {
   }
 }
 
+// ------------------ fourmula bar listener----------------------------
 fourmulaBar = document.querySelector('.fourmula-bar')
 
 fourmulaBar.addEventListener('keydown', (e) => {
   let inputFormula = fourmulaBar.value
-  // ------------some formatting---------------------
-  // Step 1: Convert to Uppercase
-  const formattedInput = inputFormula.toUpperCase()
-
-  // Step 2: Remove Unnecessary Spaces
-  const sanitizedInput = formattedInput.trim().replace(/\s+/g, ' ')
-
-  // Step 3: Ensure Space between Variables and Operators
-  let newinputFormula = sanitizedInput
-    .replace(/\(/g, '( ')
-    .replace(/\)/g, ' )')
-    .replace(/([A-Z]+\d+)\s*([+\-*/])/g, '$1 $2 ')
-    .replace(/\s*([+\-*/])\s*/g, ' $1 ')
 
   if (e.key == 'Enter' && fourmulaBar.value) {
     // if their is a change in fourmula , break old P - C relation and evaluate new fourmula and ew P-C relation and update in cellProp
@@ -57,6 +36,18 @@ fourmulaBar.addEventListener('keydown', (e) => {
     let [cell, cellProp] = getCellAndCellProp(address)
     if (inputFormula !== cellProp.fourmula)
       removeChildFromParent(cellProp.fourmula)
+
+    //add the child to the graph component
+    addChildToGraphComponent(inputFormula, address)
+    // Check formula is cyclic or not, then only evaluate
+    // True -> cycle, False -> Not cyclic
+    console.log(graphComponentMatrix)
+    let isCyclic = isGraphCylic(graphComponentMatrix)
+    if (isCyclic === true) {
+      alert('Your formula is cyclic')
+      removeChildFromGraphComponent(inputFormula, address)
+      return
+    }
 
     let evaluatedValue = evaluateFourmula(inputFormula)
 
@@ -68,6 +59,36 @@ fourmulaBar.addEventListener('keydown', (e) => {
   }
 })
 
+//------------------------------------------------------------------------
+
+function addChildToGraphComponent(formula, childAddress) {
+  let [crid, ccid] = decodeRIDCIDFromAddress(childAddress)
+  let encodedFormula = formula.split(' ')
+  for (let i = 0; i < encodedFormula.length; i++) {
+    let asciiValue = encodedFormula[i].charCodeAt(0)
+    if (asciiValue >= 65 && asciiValue <= 90) {
+      let [prid, pcid] = decodeRIDCIDFromAddress(encodedFormula[i])
+      // B1: A1 + 10
+      // rid -> i, cid -> j
+      graphComponentMatrix[prid][pcid].push([crid, ccid])
+    }
+  }
+}
+
+function removeChildFromGraphComponent(formula, childAddress) {
+  let [crid, ccid] = decodeRIDCIDFromAddress(childAddress)
+  let encodedFormula = formula.split(' ')
+
+  for (let i = 0; i < encodedFormula.length; i++) {
+    let asciiValue = encodedFormula[i].charCodeAt(0)
+    if (asciiValue >= 65 && asciiValue <= 90) {
+      let [prid, pcid] = decodeRIDCIDFromAddress(encodedFormula[i])
+      graphComponentMatrix[prid][pcid].pop()
+    }
+  }
+}
+
+//-------------------update all the children cells recursively--------------
 function updateChildrenCells(parentAddress) {
   let [parentCell, parentCellProp] = getCellAndCellProp(parentAddress)
   let children = parentCellProp.children
@@ -90,7 +111,7 @@ function removeChildFromParent(fourmula) {
   for (let i = 0; i < encodedFourmula.length; i++) {
     let children = addressBar.value
     let asciiValue = encodedFourmula[i].charCodeAt(0)
-    if (asciiValue >= 65 && asciiValue <= 95) {
+    if (asciiValue >= 65 && asciiValue <= 90) {
       let [parentCell, parentCellProp] = getCellAndCellProp(encodedFourmula[i])
       let idx = parentCellProp.children.indexOf('children')
       parentCellProp.children.splice(idx, 1)
@@ -104,7 +125,7 @@ function addChildToParent(fourmula) {
   let encodedFourmula = fourmula.split(' ')
   for (let i = 0; i < encodedFourmula.length; i++) {
     let asciiValue = encodedFourmula[i].charCodeAt(0)
-    if (asciiValue >= 65 && asciiValue <= 95) {
+    if (asciiValue >= 65 && asciiValue <= 90) {
       let [parentCell, parentCellProp] = getCellAndCellProp(encodedFourmula[i])
       parentCellProp.children.push(childAddress)
     }
@@ -117,7 +138,7 @@ function evaluateFourmula(fourmula) {
     //chatrcode of 0th index of every string
     let asciiValue = encodedFourmula[i].charCodeAt(0)
 
-    if (asciiValue >= 65 && asciiValue <= 95) {
+    if (asciiValue >= 65 && asciiValue <= 90) {
       let [cell, cellProp] = getCellAndCellProp(encodedFourmula[i])
       encodedFourmula[i] = cellProp.value
     }
