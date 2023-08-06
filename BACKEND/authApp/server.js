@@ -3,7 +3,7 @@ const app = express()
 
 //include dotenv variabes in the process object
 require('dotenv').config()
-
+const PORT = process.env.PORT
 app.use(express.json())
 
 //database connections
