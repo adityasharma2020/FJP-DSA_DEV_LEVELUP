@@ -4,6 +4,8 @@ const app = express()
 //include dotenv variabes in the process object
 require('dotenv').config()
 const PORT = process.env.PORT
+
+// ! cookie parser = what is this and why we  use it.
 app.use(express.json())
 
 //database connections
