@@ -64,7 +64,7 @@ exports.login = async (req, res) => {
     //check for registered user
     let user = await User.findOne({ email })
     if (!user) {
-      return res.ststus(401).json({
+      return res.status(401).json({
         success: false,
         message: 'user is not registered',
       })
