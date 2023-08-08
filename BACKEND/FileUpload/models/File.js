@@ -12,7 +12,7 @@ const fileSchema = mongoose.Schema({
     type: String,
   },
   email: {
-    type: string,
+    type: String,
   },
 })
 
