@@ -11,117 +11,130 @@
     />
   </head>
   <body>
-    <!---------------------page actions-------------------- -->
-    <div class="page-actions-cont">
-      <div class="page-action">Home</div>
-      <div class="page-action">File</div>
-      <div class="page-action">Insert</div>
-      <div class="page-action">Layout</div>
-      <div class="page-action">Help</div>
-    </div>
-    <!---------------------cellprop actions-------------------- -->
+    <div id="maincontainer">
+      <div class="mainBody" id="excel-dashboard">
+        <!---------------------page actions-------------------- -->
+        <div class="page-actions-cont">
+          <div class="page-action">Home</div>
+          <div class="page-action">File</div>
+          <div class="page-action">Insert</div>
+          <div class="page-action">Layout</div>
+          <div class="page-action">Help</div>
+        </div>
+        <!---------------------cellprop actions-------------------- -->
 
-    <div class="cellprop-actions-cont">
-      <button class="dependecies-button">generate dependecies</button>
-      <span title="Copy" class="material-symbols-outlined"> content_copy </span>
-      <span title="Cut" class="material-symbols-outlined"> content_cut </span>
-      <span title="Paste" class="material-symbols-outlined">
-        content_paste
-      </span>
-      <select title="Font Family" class="font-family-prop">
-        <option value="monospace">monospace</option>
-        <option value="sans-serif">sans-serif</option>
-        <option value="fantacy">fantacy</option>
-        <option value="cursive">cursive</option>
-      </select>
-      <select title="Font Size" class="font-size-prop">
-        <option value="14">14</option>
-        <option value="16">16</option>
-        <option value="18">18</option>
-        <option value="20">20</option>
-      </select>
-      <span title="Bold" class="material-symbols-outlined bold">
-        format_bold
-      </span>
-      <span title="Italic" class="material-symbols-outlined italic">
-        format_italic
-      </span>
-      <span title="Underline" class="material-symbols-outlined underline">
-        format_underlined
-      </span>
-      <span
-        title="Align left"
-        alignment="left"
-        class="left material-symbols-outlined alignment"
-      >
-        format_align_left
-      </span>
-      <span
-        title="Align center"
-        alignment="center"
-        class="center material-symbols-outlined alignment"
-      >
-        format_align_center
-      </span>
-      <span
-        title="Align right"
-        alignment="right"
-        class="right material-symbols-outlined alignment"
-      >
-        format_align_right
-      </span>
-      <div class="color-prop">
-        <span title="Text Color" class="material-symbols-outlined">
-          format_color_text
-        </span>
-        <input type="color" class="font-color-prop" />
+        <div class="cellprop-actions-cont">
+          <button class="dependecies-button">generate dependecies</button>
+          <span title="Copy" class="material-symbols-outlined">
+            content_copy
+          </span>
+          <span title="Cut" class="material-symbols-outlined">
+            content_cut
+          </span>
+          <span title="Paste" class="material-symbols-outlined">
+            content_paste
+          </span>
+          <select title="Font Family" class="font-family-prop">
+            <option value="monospace">monospace</option>
+            <option value="sans-serif">sans-serif</option>
+            <option value="fantacy">fantacy</option>
+            <option value="cursive">cursive</option>
+          </select>
+          <select title="Font Size" class="font-size-prop">
+            <option value="14">14</option>
+            <option value="16">16</option>
+            <option value="18">18</option>
+            <option value="20">20</option>
+          </select>
+          <span title="Bold" class="material-symbols-outlined bold">
+            format_bold
+          </span>
+          <span title="Italic" class="material-symbols-outlined italic">
+            format_italic
+          </span>
+          <span title="Underline" class="material-symbols-outlined underline">
+            format_underlined
+          </span>
+          <span
+            title="Align left"
+            alignment="left"
+            class="left material-symbols-outlined alignment"
+          >
+            format_align_left
+          </span>
+          <span
+            title="Align center"
+            alignment="center"
+            class="center material-symbols-outlined alignment"
+          >
+            format_align_center
+          </span>
+          <span
+            title="Align right"
+            alignment="right"
+            class="right material-symbols-outlined alignment"
+          >
+            format_align_right
+          </span>
+          <div class="color-prop">
+            <span title="Text Color" class="material-symbols-outlined">
+              format_color_text
+            </span>
+            <input type="color" class="font-color-prop" />
+          </div>
+          <div class="color-prop">
+            <span title="Background Color" class="material-symbols-outlined">
+              format_color_fill
+            </span>
+            <input type="color" class="BG-color-prop" />
+          </div>
+        </div>
+
+        <!---------------------fourmula actions-------------------- -->
+        <div class="fourmula-actions-cont">
+          <input type="text" readonly class="address-bar" />
+          <img
+            class="fourmula-icon"
+            src="https://img.icons8.com/ios/50/formula-fx.png"
+            alt="formula-fx"
+          />
+          <input
+            type="text"
+            placeholder=" e.g: ( A1 + A2 )  select any cell and write any arithmetic fourmula for it."
+            class="fourmula-bar"
+          />
+        </div>
+
+        <!-- -----------------grid container----------------------- -->
+        <div class="grid-cont">
+          <div class="top-left-dummy-box"></div>
+          <div class="address-col-cont"></div>
+          <div class="cells-cont">
+            <div class="address-row-cont"></div>
+          </div>
+        </div>
+
+        <!-- ------------------sheet actions cont------------------- -->
+        <div class="sheet-actions-cont">
+          <div class="sheet-add-icon">
+            <span class="material-symbols-outlined"> post_add </span>
+          </div>
+
+          <div class="sheets-folder-cont">
+            <div class="sheet-folder">sheet 1</div>
+          </div>
+        </div>
       </div>
-      <div class="color-prop">
-        <span title="Background Color" class="material-symbols-outlined">
-          format_color_fill
-        </span>
-        <input type="color" class="BG-color-prop" />
-      </div>
     </div>
 
-    <!---------------------fourmula actions-------------------- -->
-    <div class="fourmula-actions-cont">
-      <input type="text" readonly class="address-bar" />
-      <img
-        class="fourmula-icon"
-        src="https://img.icons8.com/ios/50/formula-fx.png"
-        alt="formula-fx"
-      />
-      <input
-        type="text"
-        placeholder=" e.g: ( A1 + A2 )  select any cell and write any arithmetic fourmula for it."
-        class="fourmula-bar"
-      />
-    </div>
+    <!-- Add more Firebase services if needed -->
 
-    <!-- -----------------grid container----------------------- -->
-    <div class="grid-cont">
-      <div class="top-left-dummy-box"></div>
-      <div class="address-col-cont"></div>
-      <div class="cells-cont">
-        <div class="address-row-cont"></div>
-      </div>
-    </div>
-
-    <!-- ------------------sheet actions cont------------------- -->
-    <div class="sheet-actions-cont">
-      <div class="sheet-add-icon">
-        <span class="material-symbols-outlined"> post_add </span>
-      </div>
-
-      <div class="sheets-folder-cont">
-        <div class="sheet-folder">sheet 1</div>
-      </div>
-    </div>
-
+    <script src="https://www.gstatic.com/firebasejs/10.1.0/firebase-app-compat.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/10.1.0/firebase-firestore-compat.js"></script>
+    <script src="firebase.js"></script>
     <script src="./grid.js"></script>
     <script src="./cell-properties.js"></script>
-    <script src="cycleValidation.js"></script>
+    <script src="./cycleValidation.js"></script>
     <script src="./fourmula.js"></script>
   </body>
 </html>

@@ -1,3 +1,4 @@
+
 for (let i = 0; i < rows; i++) {
   for (let j = 0; j < cols; j++) {
     let cell = document.querySelector(`.cell[rid="${i}"][cid="${j}"]`)

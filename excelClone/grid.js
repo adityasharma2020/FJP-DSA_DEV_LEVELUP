@@ -52,7 +52,7 @@ firstCell.click()
 
 // -------------------
 
-// // add  generate  some data in the cells
+// add  generate  some data in the cells
 let generateDependencyButton = document.querySelector('.dependecies-button')
 generateDependencyButton.addEventListener('click', () => {
   let firstCell = document.querySelector(`.cell[rid="${0}"][cid="${0}"]`)
@@ -85,3 +85,4 @@ function childrenAddress(i, j) {
   let colID = String.fromCharCode(65 + j)
   return `${colID}${rowID}`
 }
+
