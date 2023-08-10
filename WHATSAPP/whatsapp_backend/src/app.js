@@ -8,6 +8,7 @@ import compression from 'compression'
 import fileUpload from 'express-fileupload'
 import cors from 'cors'
 
+
 // dotenv configuration
 dotenv.config()
 
