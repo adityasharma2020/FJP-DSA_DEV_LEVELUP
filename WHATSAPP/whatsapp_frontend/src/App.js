@@ -1,11 +1,17 @@
-import {CallIcon, DocumentIcon} from "./svg"
+import { BrowserRouter as Router, Routes, Route } from 'react-router-dom'
+import Home from "./pages/Home"
+import Login from './pages/Login'
+import Register from './pages/Register'
 function App() {
   return (
-    <div>
-      <h1 className='text-red-500 font-thin bg-yellow-300'>
-        hello form the app.js frontend
-      </h1>
-      <CallIcon className="fill-blue-600"></CallIcon>
+    <div className='dark'>
+      <Router>
+        <Routes>
+          <Route path='/' element={<Home></Home>}></Route>
+          <Route path='/login' element={<Login></Login>}></Route>
+          <Route path='/register' element={<Register></Register>}></Route>
+        </Routes>
+      </Router>
     </div>
   )
 }
