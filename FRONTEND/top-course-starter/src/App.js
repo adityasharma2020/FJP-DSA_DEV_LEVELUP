@@ -13,7 +13,7 @@ const App = () => {
   useEffect(() => {
     const fetchData = async () => {
       try {
-        const res = await fetch(apiUrl+"ds")
+        const res = await fetch(apiUrl)
         const output = await res.json()
 
         // Save data into a variable
@@ -28,7 +28,7 @@ const App = () => {
   }, [])
 
   return (
-    <div>
+    <div className='flex flex-col'>
       <Navbar />
       <Filter filterData={filterData} />
 

@@ -1,8 +1,9 @@
+import React from "react"
 const Navbar = () => {
   return (
     <div>
-      <nav>
-        <h1>Top Courses</h1>
+      <nav className="flex">
+        <h1 className="text-lg">Top Courses</h1>
       </nav>
     </div>
   )
