@@ -1,17 +1,27 @@
-const fs = require('fs')
-const TransformStream = require('stream').Transform
+const http = require('http')
 
-const readStream = fs.createReadStream('./index.html')
-const writeStream = process.stdout
-const fileWriteStream = fs.createReadStream('./write.txt')
-const transformstream = new TransformStream({
-  transform(chunk, enc, cb) {
-    this.push(chunk.toString().toUpperCase())
-    setTimeout(cb, 1000)
-  },
+//using the create server function we can actually create a
+//basic http server using http module, this function returns a
+//server object and takes a callback function(listener function)
+//  as an argument.
+
+//this function created a server object but didn't start
+// the server.
+const server = http.createServer(function listener() {
+  /*this callback is a kind of a listener function that
+  // is going to be collect every http request that we
+  // will make to our server
+  request -> we will be able to details of incoming http request.
+  response -> we will be able to configure  what res we need to send.
+  
+  */
+  //TODO
 })
 
-const outputStream = readStream.pipe(transformstream)
+const PORT = 3000
 
-outputStream.pipe(writeStream)
-// outputStream.pipe(fileWriteStream)
+server.listen(PORT, function exec() {
+  //once we successfully boot up the serve on the given port
+  // this callback will be executed.
+  console.log(`server is up and running on PORT : ${PORT}`)
+})
