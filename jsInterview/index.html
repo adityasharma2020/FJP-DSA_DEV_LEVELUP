@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Project: Excel Clone with Cycle Detection</title>
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <div class="header">
+    <h1>Project: Excel Clone with Cycle Detection</h1>
+  </div>
+
+  <div class="content">
+    <div class="section">
+      <h2>Introduction</h2>
+      <p>
+        This document outlines the design and architecture of the Excel Clone project with an added functionality of cycle detection. The project aims to provide a user-friendly web-based spreadsheet application that allows users to create, manage, and calculate data in a familiar Excel-like interface. Additionally, the application includes a cycle detection algorithm to prevent and visualize cyclic dependencies among cells, ensuring data consistency and preventing infinite loops.
+      </p>
+    </div>
+
+    <div class="section">
+      <h2>Features</h2>
+      <ul>
+        <li>Menu Bar: The top section of the application contains a menu bar with buttons for Home, File, Insert, Layout, and Help actions.</li>
+        <li>Cell Properties Actions: This section houses various buttons for cell manipulation, including Cut, Copy, Paste, Font Family, Font Size, Bold, Italic, Underline, Alignment (Left, Center, Right), Text Color, and Background Color.</li>
+        <li>Address Bar & Formula Bar: The address bar displays the address of the currently selected cell, while the formula bar allows users to input arithmetic formulas and cell references to calculate cell values.</li>
+        <li>Two-Way Binding: Whenever a user selects a cell, its corresponding formula appears in the formula bar, and its properties are reflected in the cell properties section. Similarly, changes in the formula bar or cell properties update the cell's appearance and value accordingly.</li>
+        <li>Real-Time Formula Evaluation: Formulas are evaluated in real-time, and changes in cell values propagate to dependent cells automatically.</li>
+        <li>Multi-Sheet Support: The application allows users to work with multiple sheets simultaneously, with the ability to download and import sheets as JSON files.</li>
+        <li>Cycle Detection: The unique cycle detection functionality uses graph algorithms to identify cyclic dependencies among cells. When a cycle is detected, the application alerts the user and offers an option to visualize the path of dependent cells causing the cycle.</li>
+      </ul>
+    </div>
+
+    <div class="section">
+      <h2>Architecture</h2>
+      <p>
+        The Excel Clone follows a client-side Model-View-Controller (MVC) architecture, which separates data, UI, and logic to ensure modularity and maintainability.
+      </p>
+      <ul>
+        <li>index.html: This main HTML file structures the UI, including the menu bar, cell properties section, address bar, formula bar, and grid container.</li>
+        <li>style.css: The CSS file defines the visual styling and layout of the application, providing an intuitive user interface.</li>
+        <li>app.js: The primary JavaScript file acts as the controller, managing interactions between the model and view components.</li>
+        <li>grid.js: This JavaScript file is responsible for creating and managing the grid cells. It handles events such as cell selection, blur, and updates data stored in each cell.</li>
+        <li>formula.js: The formula.js file manages cell formula evaluation and dependency tracking. It evaluates formulas in real-time, updates cell values, and detects cyclic dependencies using graph algorithms.</li>
+        <li>cell-properties.js: This JavaScript file handles cell properties, allowing users to modify cell appearance (e.g., font, color, alignment) and apply changes in real-time.</li>
+        <li>file-handler.js: The file-handler.js file manages file download and import functionality, allowing users to work with multiple sheets.</li>
+      </ul>
+    </div>
+
+    <div class="section">
+      <h2>Cycle Detection Algorithm</h2>
+      <p>
+        The cycle detection algorithm uses a directed graph representation, where each cell is a node, and dependencies create directed edges between cells.
+      </p>
+      <ul>
+        <li>When a user enters a formula, the algorithm builds a graph representation of cell dependencies.</li>
+        <li>A depth-first search (DFS) algorithm is used to detect cycles within the graph.</li>
+        <li>If a cycle is detected, the algorithm provides an alert to the user, indicating the presence of a cycle.</li>
+        <li>The algorithm also allows users to visualize the path of dependencies leading to the cycle, aiding in identifying and resolving the cycle.</li>
+      </ul>
+    </div>
+
+    <div class="section">
+      <h2>Improvement Areas</h2>
+      <ul>
+        <li>Enhance performance for handling large datasets, as complex spreadsheets may have a significant number of cells and dependencies.</li>
+        <li>Implement data validation and error handling to provide meaningful feedback to users when entering incorrect or invalid formulas.</li>
+        <li>Consider integrating third-party libraries for more advanced formula evaluation and support for Excel-like functions (SUM, AVERAGE).</li>
+        <li>Improve user experience with tooltips, keyboard shortcuts, and context menus for quick access to functions.</li>
+        <li>Optimize the cycle detection algorithm for efficiency with larger datasets.</li>
+        <li>Implement a local storage mechanism for saving the current state of sheets within the browser.</li>
+      </ul>
+    </div>
+
+    <div class="section">
+      <h2>Conclusion</h2>
+      <p>
+        The Excel Clone with Cycle Detection is a comprehensive web-based spreadsheet application with advanced functionalities like two-way binding, real-time formula evaluation, and cycle detection. It provides users with an intuitive and user-friendly interface, offering a familiar experience similar to Microsoft Excel. The cycle detection feature adds uniqueness and prevents issues related to cyclic dependencies. The architecture ensures maintainability and scalability for future enhancements. Overall, this project serves as an excellent foundation for further development and customization based on user needs.
+      </p>
+    </div>
+  </div>
+
+  <script src="script.js"></script>
+</body>
+</html>
