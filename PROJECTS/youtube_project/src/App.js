@@ -3,8 +3,6 @@ import { BrowserRouter, Routes, Route } from 'react-router-dom'
 import { AppContext } from './context/contextApi'
 import Header from './components/Header'
 import Feed from './components/Feed'
-import LeftNav from './components/LeftNav'
-import LeftNavMenuItems from './components/LeftNavMenuItems'
 import SearchResults from './components/SearchResult'
 import VideoDetails from './components/VideoDetails'
 const App = () => {
