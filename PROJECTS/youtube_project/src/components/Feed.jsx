@@ -6,7 +6,7 @@ import VideoCard from './VideoCard'
 
 const Feed = () => {
   const { loading, searchResults } = useContext(Context)
-  console.log(searchResults[0])
+  console.log('searchresults array', searchResults[0])
 
   useEffect(() => {
     document.getElementById('root').classList.remove('custom-h')

@@ -11,6 +11,10 @@ body {
   -moz-osx-font-smoothing: grayscale;
 }
 
+::-webkit-scrollbar{
+  display: none;
+}
+
 #root {
   height: 100vh;
 }

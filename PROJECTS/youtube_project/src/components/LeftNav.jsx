@@ -39,6 +39,7 @@ const LeftNav = () => {
                 icon={item.icon}
                 action={() => {
                   console.log('clicekd :', item.name)
+                  console.log('selected category :', selectedCategory)
                   clickHandler(item.name, item.type)
                   navigate('/')
                 }}

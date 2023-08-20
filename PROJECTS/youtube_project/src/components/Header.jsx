@@ -11,7 +11,7 @@ import { FiBell } from 'react-icons/fi'
 import { CgClose } from 'react-icons/cg'
 
 import { Context } from '../context/contextApi'
-import Loader from '../shared/Loader'
+import Loader from '../shared/loader'
 
 const Header = () => {
   const [searchQuery, setSearchQuery] = useState('')
@@ -25,7 +25,7 @@ const Header = () => {
       (event?.key === 'Enter' || event === 'searchButton') &&
       searchQuery?.length > 0
     ) {
-      navigate(`/SearchResult/${searchQuery}`)
+      navigate(`/searchResult/${searchQuery}`)
     }
   }
 

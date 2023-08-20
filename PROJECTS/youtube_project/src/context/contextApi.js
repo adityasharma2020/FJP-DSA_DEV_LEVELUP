@@ -19,6 +19,7 @@ export const AppContext = (props) => {
   }
   useEffect(() => {
     fetchSelectedCategoryData(selectedCategory)
+    console.log('use effect', selectedCategory)
   }, [selectedCategory])
 
   return (
@@ -28,7 +29,7 @@ export const AppContext = (props) => {
         setLoading,
         searchResults,
         setSearchResults,
-        setSelectedCategory,
+        selectedCategory,
         setSelectedCategory,
         mobileMenu,
         setMobileMenu,
