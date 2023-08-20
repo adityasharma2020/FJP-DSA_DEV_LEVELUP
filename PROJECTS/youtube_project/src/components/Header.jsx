@@ -25,7 +25,7 @@ const Header = () => {
       (event?.key === 'Enter' || event === 'searchButton') &&
       searchQuery?.length > 0
     ) {
-      navigate(`/searchResult/${searchQuery}`)
+      navigate(`/SearchResult/${searchQuery}`)
     }
   }
 
