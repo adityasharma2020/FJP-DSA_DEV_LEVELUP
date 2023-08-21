@@ -12,6 +12,6 @@ router.post('/login')
 router.route('/register').post(trimRequest.all,register)
 router.route('/login').post(trimRequest.all,login)
 router.route('/logout').post(trimRequest.all,logout)
-router.route('/refreshToken').post(trimRequest.all,refreshToken)
+router.route('/refreshtoken').post(trimRequest.all,refreshToken)
 
 export default router
