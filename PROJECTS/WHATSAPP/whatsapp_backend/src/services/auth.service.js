@@ -1,6 +1,7 @@
 import createHttpError from 'http-errors'
 import validator from 'validator'
 import { UserModel } from '../models/index.js'
+import bcrypt from 'bcrypt'
 
 //env variables
 const { DEFAULT_PICTURE, DEFAULT_STATUS } = process.env
@@ -50,8 +51,7 @@ export const createUser = async (userData) => {
     )
   }
 
-//hash password ----> to be done in the user model
-
+  //hash password ----> to be done in the user model
 
   // -------------------adding user to the database--------------------
   const user = await new UserModel({
@@ -61,6 +61,22 @@ export const createUser = async (userData) => {
     status: status || DEFAULT_STATUS,
     password,
   }).save()
+
+  return user
+}
+
+export const signUser = async (email, password) => {
+  const user = await UserModel.findOne({ email: email.toLowerCase() }).lean()
+
+  //check if user/email exists
+  if (!user) {
+    throw createHttpError.NotFound('Invalid credentials')
+  }
+
+  //compare passwords
+  let passwordMatches = await bcrypt.compare(password, user.password)
+
+  if (!passwordMatches) throw createHttpError.NotFound('Invalid password')
 
   return user
 }
