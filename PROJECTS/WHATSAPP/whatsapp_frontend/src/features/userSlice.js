@@ -5,7 +5,7 @@ const initialState = {
   error: '',
   user: {
     id: '',
-    name: '',
+    name: 'aditya sharma',
     email: '',
     picture: '',
     status: '',
@@ -18,20 +18,19 @@ export const userSlice = createSlice({
   initialState: initialState,
   reducers: {
     logout: (state) => {
-      (state.status = ''),
-        (state.error = ''),
-        (state.user = {
-          id: '',
-          name: '',
-          email: '',
-          picture: '',
-          status: '',
-          token: '',
-        })
+      state.status = ''
+      state.error = ''
+      state.user = {
+        id: '',
+        name: '',
+        email: '',
+        picture: '',
+        status: '',
+        token: '',
+      }
     },
   },
 })
 
-export const {logout} = userSlice.actions;
-
+export const { logout } = userSlice.actions
 export default userSlice.reducer
