@@ -56,7 +56,7 @@ app.get('/test', (req, res) => {
   throw createHttpError.BadRequest('this test route has an error')
 })
 
-// ------------------------------------------------
+// -----------------Error handling-------------------------------
 app.use(async (req, res, next) => {
   next(createHttpError.NotFound('this route does not exist.'))
 })
