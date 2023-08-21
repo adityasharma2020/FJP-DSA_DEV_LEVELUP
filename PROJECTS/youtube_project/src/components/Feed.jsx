@@ -20,7 +20,7 @@ const Feed = () => {
           {!loading &&
             searchResults.map((item) => {
               if (item.kind !== 'youtube#searchResult') return false
-              return <VideoCard key={item?.id?.videoId} video={item?.snippet} />
+              return <VideoCard key={item?.id?.videoId}  video={item} />
             })}
         </div>
       </div>

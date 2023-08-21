@@ -3,32 +3,34 @@ import { abbreviateNumber } from 'js-abbreviation-number'
 import { Link } from 'react-router-dom'
 import { BsFillCheckCircleFill } from 'react-icons/bs'
 
-// import VideoLength from '../shared/videoLength'
+import VideoLength from '../shared/VideoLength'
 
 const VideoCard = ({ video }) => {
-
+  const id = video.id.videoId;
+  const snippet = video.snippet
+  console.log(id, snippet)
   return (
-    <Link to={`/video/${video?.videoId}`}>
-      <div className='flex flex-col mb-8'>
+    <Link to={`/video/${id}`}>
+      <div className='flex flex-col mb-8 video-card'>
         <div className='relative h-48 md:h-40 md:rounded-xl overflow-hidden'>
           <img
             className='h-full w-full object-cover'
-            src={video?.thumbnails?.high?.url}
+            src={snippet?.thumbnails?.high?.url}
           />
-          {/* {video?.lengthSeconds && <VideoLength time={video?.lengthSeconds} />} */}
+          {<VideoLength time={snippet?.lengthSeconds} />}
         </div>
         <div className='flex text-white mt-3'>
           <div className='flex items-start'>
             <div className='flex h-9 w-9 rounded-full overflow-hidden'>
               <img
                 className='h-full w-full object-cover'
-                src={video?.author?.avatar[0]?.url}
+                src={snippet.default?.url}
               />
             </div>
           </div>
           <div className='flex flex-col ml-3 overflow-hidden'>
             <span className='text-sm font-bold line-clamp-2'>
-              {video?.title}
+              {snippet?.title}
             </span>
             <span className='text-[12px] font-semibold mt-2 text-white/[0.7] flex items-center'>
               {video?.author?.title}
