@@ -1,3 +1,3 @@
-export default function Login() {
-  return <div> Login</div>
+export default function Register() {
+  return <div> Register</div>
 }
