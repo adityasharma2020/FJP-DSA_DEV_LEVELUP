@@ -25,11 +25,13 @@ function initServer() {
         const typeDefs = `
     type Query {
       hello: String
+      sayHelloToMe(name:String!) :String
     }
   `;
         const resolvers = {
             Query: {
                 hello: () => 'Hello, world!',
+                sayHelloToMe: (parent, { name }) => `hey ${name}`,
             },
         };
         const graphqlServer = new server_1.ApolloServer({

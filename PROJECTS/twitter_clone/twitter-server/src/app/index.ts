@@ -11,12 +11,14 @@ export async function initServer() {
   const typeDefs = `
     type Query {
       hello: String
+      sayHelloToMe(name:String!) :String
     }
   `
 
   const resolvers = {
     Query: {
       hello: () => 'Hello, world!',
+      sayHelloToMe: (parent: any, { name }: { name: string }) => `hey ${name}`,
     },
   }
 
