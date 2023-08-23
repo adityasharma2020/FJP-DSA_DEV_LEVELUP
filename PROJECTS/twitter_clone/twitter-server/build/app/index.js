@@ -17,10 +17,12 @@ const express_1 = __importDefault(require("express"));
 const server_1 = require("@apollo/server");
 const express4_1 = require("@apollo/server/express4");
 const body_parser_1 = __importDefault(require("body-parser"));
+const db_1 = require("../clients/db");
 function initServer() {
     return __awaiter(this, void 0, void 0, function* () {
         const app = (0, express_1.default)();
         app.use(body_parser_1.default.json());
+        db_1.PrismaClient.User.create({});
         //grphql server
         const typeDefs = `
     type Query {

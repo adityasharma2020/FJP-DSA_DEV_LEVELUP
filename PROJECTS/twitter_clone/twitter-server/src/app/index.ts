@@ -3,10 +3,14 @@ import { ApolloServer } from '@apollo/server'
 import { expressMiddleware } from '@apollo/server/express4'
 import bodyParser from 'body-parser'
 import { graphql } from 'graphql'
+import { prismaCient } from '../clients/db'
 
 export async function initServer() {
   const app = express()
   app.use(bodyParser.json())
+
+
+
   //grphql server
   const typeDefs = `
     type Query {
