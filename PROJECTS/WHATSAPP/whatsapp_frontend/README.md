@@ -68,3 +68,15 @@ This section has moved here: [https://facebook.github.io/create-react-app/docs/d
 ### `npm run build` fails to minify
 
 This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+
+
+app ->store(.js file)
+features-->slice (.js files)
+pages --->all pages (.js files)
+components ->components(.jsx files)
+svg-->all icons
+
+
+tailwind reference values:
+1--->4px ----->0.25rem
+4---->4*4px---> 4* 0.25rem
