@@ -9,7 +9,6 @@ import {
 import authMiddleware from '../middlewares/authMiddleware.js'
 
 const router = express.Router()
-router.post('/login')
 
 router.route('/register').post(trimRequest.all, register)
 router.route('/login').post(trimRequest.all, login)
