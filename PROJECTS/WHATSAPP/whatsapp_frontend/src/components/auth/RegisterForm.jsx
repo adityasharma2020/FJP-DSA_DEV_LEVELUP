@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useState } from 'react'
 import { useForm } from 'react-hook-form'
 import { yupResolver } from '@hookform/resolvers/yup'
 import { signUpSchema } from '../../utils/validation'
@@ -7,12 +7,16 @@ import PulseLoader from 'react-spinners/PulseLoader'
 import { useDispatch, useSelector } from 'react-redux'
 import { Link, useNavigate } from 'react-router-dom'
 import { registerUser } from '../../features/userSlice'
+import Picture from './Picture'
 
 export default function RegisterForm() {
   const dispatch = useDispatch()
   const navigate = useNavigate()
   const { status, error } = useSelector((state) => state.user)
+  const [picture, setPicture] = useState() // here we put the image that we upload to cloudinary
+  const [readablePicture, setReadablePicture] = useState('') //this is the file that we read from user
 
+  console.log(readablePicture, picture)
   const {
     handleSubmit,
     register,
@@ -26,11 +30,11 @@ export default function RegisterForm() {
   }
 
   return (
-    <div className='h-screen w-full flex items-center justify-center overflow-hidden'>
+    <div className='min-h-screen w-full flex m-10 items-center justify-center overflow-hidden'>
       {/* container */}
-      <div className='max-w-md y-8 p-10 dark:bg-dark_bg_2 rounded-xl'>
+      <div className=' w-full max-w-md y-8 p-10 dark:bg-dark_bg_2 rounded-xl'>
         {/* heading */}
-        <div className='text-center dark:text-dark_text_1'>
+        <div className='text-center  dark:text-dark_text_1'>
           <h2 className='mt-6 text-3xl font-bold'>Welcome</h2>
           <p className='mt-2 text-sm'>sign up</p>
         </div>
@@ -67,6 +71,12 @@ export default function RegisterForm() {
             placeholder='Password'
             register={register}
             error={errors?.password?.message}
+          />
+          {/* picture */}
+          <Picture
+            readablePicture={readablePicture}
+            setReadablePicture={setReadablePicture}
+            setPicture={setPicture}
           />
 
           {/* if we have an Error while registering */}
