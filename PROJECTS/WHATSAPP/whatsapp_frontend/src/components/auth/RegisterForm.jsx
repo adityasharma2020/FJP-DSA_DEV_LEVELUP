@@ -25,9 +25,18 @@ export default function RegisterForm() {
   } = useForm({ resolver: yupResolver(signUpSchema) })
 
   const onSubmit = (data) => {
+    // if (picture) {
+    //   //upload to cloudinary and then register user
+
+    // }else{
+
+    // }
     dispatch(registerUser({ ...data, picture: '' }))
-    if (status === 'succeeded') navigate('/')
+    if (status === 'succeeded') navigate('/') 
+    // ????????????
   }
+
+ 
 
   return (
     <div className='min-h-screen w-full flex m-10 items-center justify-center overflow-hidden'>
