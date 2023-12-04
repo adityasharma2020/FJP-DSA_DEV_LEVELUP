@@ -1,0 +1,197 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link
+      href="https://cdnjs.cloudflare.com/ajax/libs/video.js/7.11.7/video-js.min.css"
+      rel="stylesheet"
+    />
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/video.js/7.11.7/video.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/videojs-contrib-eme@3.8.0/dist/videojs-contrib-eme.js"></script>
+    <title>Test VideoJS DRM</title>
+  </head>
+  <body>
+    <div style="margin: 50px auto">
+      <video id="my-video" class="video-js"></video>
+    </div>
+    <script>
+      // Initialize Video.js player
+      var player = videojs(
+        "my-video",
+        {
+          controls: true,
+          fluid: true,
+          html5: { vhs: { overrideNative: true } },
+        },
+        function () {
+          setupPlayer(this);
+        }
+      );
+
+      function setupPlayer(player) {
+        player.eme();
+        player.src({
+          src: "https://cdn.bitmovin.com/content/assets/art-of-motion_drm/mpds/11331.mpd",
+          type: "application/dash+xml",
+          keySystems: {
+            "com.widevine.alpha":
+              "https://cwip-shaka-proxy.appspot.com/no_auth",
+          },
+        });
+
+        player.ready(function () {
+          this.tech(true).on("keystatuschange", function (event) {
+            console.log("Key status change event: ", event);
+          });
+
+          var seekBar = this.controlBar.progressControl.seekBar;
+
+          // Function to log the height of the seekbar
+          var logSeekBarHeight = function () {
+            var height = seekBar.el().offsetHeight;
+            updateMarkerHeight(height == 5 ? 3 : 5)
+            console.log("SeekBar height:", height);
+          };
+
+          // Add mouseenter and mouseleave event listeners
+          seekBar.el().addEventListener("mouseenter", logSeekBarHeight);
+          seekBar.el().addEventListener("mouseleave", logSeekBarHeight);
+        });
+
+        // Event listeners for player
+        player.on("loadedmetadata", handleLoadedMetadata);
+        player.on("play", handlePlayEvent);
+        // player.on("playerresize", handlePlayerResize);
+
+        // Window resize listener
+        window.addEventListener("resize", handleWindowResize);
+      }
+
+      function handleLoadedMetadata() {
+        addMarkers([
+          { time: 0, label: "Intro" },
+          { time: 60, label: "Section 1" },
+          { time: 90, label: "Section 2" },
+          { time: 120, label: "Section 3" },
+          { time: 210, label: "End Part" },
+        ]);
+      }
+
+      function handlePlayEvent() {
+        console.log("Video has started playing");
+        updateMarkerWidths();
+      }
+
+      function handlePlayerResize() {
+        console.log("Player resized");
+        updateMarkerWidths();
+      }
+
+      function handleWindowResize() {
+        console.log("Window resized");
+        updateMarkerWidths();
+      }
+
+      function updateMarkerHeight(updatedHeight) {
+        var existingMarkers = document.querySelectorAll(
+          ".vjs-marker"
+        );
+        existingMarkers.forEach(function (marker, index) {
+          var height = updatedHeight ? updatedHeight : "2px";
+          marker.style.height = Math.ceil(height) + "px";
+        });
+      }
+
+      function updateMarkerWidths() {
+        var distances = calculateMarkerDistances();
+        var existingMarkers = document.querySelectorAll(
+          ".vjs-marker-hover-area"
+        );
+        existingMarkers.forEach(function (marker, index) {
+          var width = index < distances.length ? distances[index] : "2px";
+          marker.style.width = Math.ceil(width) + "px";
+        });
+      }
+
+      function calculateMarkerDistances() {
+        var seekBarWidth =
+          player.controlBar.progressControl.seekBar.el().offsetWidth;
+        var markers = [
+          { time: 0, label: "Intro" },
+          { time: 60, label: "First Key Scene" },
+          { time: 90, label: "Mid Point" },
+          { time: 120, label: "Climax" },
+          { time: 210, label: "Conclusion" },
+        ];
+        return markers.slice(0, -1).map(function (marker, i) {
+          var nextMarker = markers[i + 1];
+          var pos1 = (marker.time / player.duration()) * seekBarWidth;
+          var pos2 = (nextMarker.time / player.duration()) * seekBarWidth;
+          return Math.abs(pos2 - pos1);
+        });
+      }
+
+      function addMarkers(markers) {
+        var seekBar = player.controlBar.progressControl.seekBar;
+        markers.forEach(function (marker) {
+          var markerDiv = document.createElement("div");
+          markerDiv.className = "vjs-marker";
+          markerDiv.style.left = (marker.time / player.duration()) * 100 + "%";
+
+          var hoverDiv = document.createElement("div");
+          hoverDiv.className = "vjs-marker-hover-area";
+
+          var tooltipDiv = document.createElement("div");
+          tooltipDiv.className = "vjs-marker-tooltip";
+          tooltipDiv.innerText = marker.label;
+
+          hoverDiv.appendChild(tooltipDiv);
+          markerDiv.appendChild(hoverDiv);
+          seekBar.el().appendChild(markerDiv);
+        });
+      }
+    </script>
+    <style>
+      .vjs-marker {
+        position: absolute;
+        bottom: 0;
+        width: 2px;
+        height: 4px;
+        background-color: black;
+        cursor: pointer;
+        transition: height 0.1s ease; /* Transition for height change */
+      }
+
+      .vjs-marker-hover-area {
+        position: absolute;
+        width: 100px;
+        height: 30px;
+        left: -1px;
+        top: -14px;
+        cursor: pointer;
+      }
+
+      .vjs-marker-tooltip {
+        position: absolute;
+        bottom: 120%;
+        left: 50%;
+        min-width: 80%;
+        transform: translateX(-50%);
+        padding: 8px;
+        background-color: black;
+        border-radius: 8px;
+        color: white;
+        visibility: hidden;
+        opacity: 0;
+        transition: visibility 0s, opacity 0.5s linear;
+      }
+
+      .vjs-marker-hover-area:hover .vjs-marker-tooltip {
+        visibility: visible;
+        opacity: 1;
+      }
+    </style>
+  </body>
+</html>
