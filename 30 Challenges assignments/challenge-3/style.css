@@ -1,0 +1,28 @@
+/* styles.css */
+body {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    margin: 0;
+    background-color: #121212;
+    color: #ffffff;
+    font-family: 'Arial', sans-serif;
+  }
+  
+  .clock {
+    font-size: 3em;
+    text-align: center;
+    padding: 20px;
+    border: 2px solid #61dafb;
+    border-radius: 10px;
+    background-color: #282c34;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.3);
+  }
+  
+  #Clocktime {
+    font-weight: bold;
+    letter-spacing: 2px;
+    color: #61dafb;
+  }
+  
