@@ -1,0 +1,53 @@
+body {
+    margin: 0;
+    font-family: 'Arial', sans-serif;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    background-color: black;
+    color: white;
+}
+
+.container {
+    display: flex;
+    align-items: center;
+	flex-direction: column;
+	gap: 0.2rem;
+}
+
+h1{
+	font-size: 3rem;
+}
+
+.switch {
+    position: relative;
+    display: inline-block;
+    width: 10rem;
+    height: 5rem;
+    background-color: gray;
+    border-radius: 5rem;
+    margin-right: 1rem;
+}
+
+.switch::after {
+    content: '';
+    position: absolute;
+    top: 0.1rem;
+    left: 0.1rem;
+    width: 4.8rem;
+    height: 4.8rem;
+    background-color: white;
+    border-radius: 50%;
+    transition: all 0.3s linear;
+}
+
+input[type='checkbox']:checked + .switch::after {
+    transform: translateX(5rem);
+}
+input[type='checkbox']:checked + .switch {
+    background-color: rgb(21, 118, 179);
+}
+input{
+	display: none;
+}
