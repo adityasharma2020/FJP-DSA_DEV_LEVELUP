@@ -19,7 +19,7 @@ const fetchAllImages = async () => {
 			await fetch('https://api.slingacademy.com/v1/sample-data/photos?limit=20')
 		).json();
 		images = response.photos;
-		console.log(images);
+
 		return addImagesToGallery(images);
 	} catch (error) {
 		console.log(error);
@@ -74,20 +74,16 @@ function addModalImage(index) {
 }
 
 function openModal(index) {
-	console.log(index);
 	addModalImage(index);
 	modal.style.display = 'block';
 }
 
 function closeModal() {
-	console.log(modalImageContainer);
 	removeModalImage();
 	modal.style.display = 'none';
 }
 
 function changeImage(direction) {
-	console.log(currentModalImageIndex);
-
 	removeModalImage();
 
 	if (direction === 'prev') {
@@ -96,7 +92,6 @@ function changeImage(direction) {
 		currentModalImageIndex += 1;
 	}
 
-	console.log('after diretion check :', currentModalImageIndex);
 	if (currentModalImageIndex < 0) {
 		currentModalImageIndex = images.length - 1;
 	} else if (currentModalImageIndex === images.length) {
