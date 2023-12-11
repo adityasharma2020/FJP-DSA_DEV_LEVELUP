@@ -119,6 +119,16 @@ h1 {
 		font-size: 1.5rem;
 	}
 }
+.instructions {
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	bottom: 5rem;
+}
+
+.instructions p {
+	color: rgba(255, 255, 255, 0.585);
+}
 
 /* Gallery */
 

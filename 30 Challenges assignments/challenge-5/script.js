@@ -100,3 +100,15 @@ function changeImage(direction) {
 
 	addModalImage(currentModalImageIndex);
 }
+
+document.addEventListener('keydown', (event) => {
+	if (event.key === 'ArrowRight') {
+		changeImage('next');
+	} else if (event.key === 'ArrowLeft') {
+		changeImage('prev');
+	} else if (event.key === 'Escape') {
+		closeModal();
+	}
+});
+
+
